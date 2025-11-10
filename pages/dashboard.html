@@ -49,12 +49,11 @@
     </main>
 
     <footer role="contentinfo">
-        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Tu éxito es nuestra misión.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Tu éxito es nuestra misión.</p>
     </footer>
     <script src="../assets/js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Obtener el tipo de perfil de la URL (si viene del login)
             const urlParams = new URLSearchParams(window.location.search);
             const profile = urlParams.get('profile');
             const profileMessageElement = document.getElementById('profile-message');
@@ -72,8 +71,6 @@
             } else {
                 profileMessageElement.textContent = "Bienvenido/a. Explora tus cursos adaptados.";
             }
-
-            // La lógica de persistencia del script.js ya se encarga de aplicar los estilos de accesibilidad.
         });
     </script>
 </body>
