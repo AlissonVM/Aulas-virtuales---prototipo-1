@@ -30,6 +30,8 @@
     </header>
 
     <main role="main">
+        <div id="welcome-message" aria-live="polite" class="welcome-banner"></div>
+
         <section class="hero-section hero-dashboard" aria-labelledby="dashboard-title">
             <h2 id="dashboard-title">¡Bienvenido a tu Dashboard Personalizado!</h2>
             <p>Aquí puedes ver tu progreso y acceder rápidamente a tus cursos adaptados.</p>
@@ -52,10 +54,12 @@
                     <p>Acceso al primer módulo y la evaluación. ¡Continúa tu aprendizaje!</p>
                     <a href="../classes/class-module-1.html" class="button-primary">Ir al Curso</a>
                 </div>
+
                 <div class="course-card course-pending">
                     <h4>Auditoría de Sistemas de Gestión Inclusiva</h4>
                     <p>Próximo curso. Requiere la finalización del Módulo 1.</p>
-                    <a href="#" class="button-primary disabled" aria-disabled="true">Bloqueado</a>
+                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1" aria-describedby="locked-info">Bloqueado</a>
+                    <p id="locked-info" class="sr-only">Este curso requiere la finalización previa del Módulo 1: Fundamentos de la Sostenibilidad.</p>
                 </div>
             </div>
         </section>
