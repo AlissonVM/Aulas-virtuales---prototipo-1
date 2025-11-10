@@ -6,7 +6,7 @@
     <title>Acceso Adaptado | EducaTech Inclusiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/accessibility.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
 </head>
 <body>
     <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
@@ -24,40 +24,39 @@
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
                 <li><a href="../pages/dashboard.html">Mi Dashboard</a></li>
-                <li><a href="#" aria-current="page">Acceso Adaptado</a></li>
+                <li><a href="../pages/login.html" aria-current="page">Acceso Adaptado</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section style="text-align: center; padding: 40px 20px;">
-            <h2>👤 Selecciona tu Experiencia de Acceso Adaptado</h2>
-            <p>Elige tu perfil para personalizar automáticamente la plataforma y obtener una experiencia educativa a tu medida.</p>
+        <section class="hero-section hero-login" aria-labelledby="login-heading">
+            <h2 id="login-heading">Selecciona tu Perfil de Acceso Adaptado</h2>
+            <p>Tu plataforma se ajustará a tus necesidades. Solo haz clic en el perfil que te corresponda.</p>
         </section>
 
-        <div class="profile-selector" role="group" aria-label="Selección de Perfil de Discapacidad para Acceso">
-            <button onclick="accessWithProfile('visual')" aria-label="Iniciar Sesión con Perfil Visual. Activa Lector, Alto Contraste y Fuentes Grandes.">
-                👁️‍🗨️ Experiencia Visual
-                <span>(Activa Lector de pantalla, Alto Contraste, Fuentes más grandes)</span>
+        <div class="profile-selector">
+            <button role="button" data-profile="Usuario con Adaptaciones Visuales" aria-label="Acceder con perfil para discapacidad visual.">
+                👓 Perfil Visual (Baja Visión/Ceguera)
+                <span>Optimizado para lectores de pantalla, alto contraste y aumento de fuente.</span>
             </button>
-            <button onclick="accessWithProfile('auditiva')" aria-label="Iniciar Sesión con Perfil Auditivo. Activa Subtítulos por defecto.">
-                👂 Experiencia Auditiva
-                <span>(Activa Subtítulos obligatorios, Transcripciones de audio)</span>
+
+            <button role="button" data-profile="Usuario con Adaptaciones Cognitivas" aria-label="Acceder con perfil para adaptaciones cognitivas.">
+                🧠 Perfil Cognitivo (Dislexia/TDAH)
+                <span>Modo lector con pictogramas, lenguaje simplificado y foco mejorado.</span>
             </button>
-            <button onclick="accessWithProfile('motriz')" aria-label="Iniciar Sesión con Perfil Motriz. Activa Navegación por Teclado y Comandos de Voz.">
-                ♿ Experiencia Motriz
-                <span>(Foco visible optimizado, Navegación por teclado mejorada)</span>
-            </button>
-            <button onclick="accessWithProfile('cognitiva')" aria-label="Iniciar Sesión con Perfil Cognitivo. Activa Modo Simplificado y apoyo visual.">
-                🧠 Experiencia Cognitiva
-                <span>(Modo Simplificado, Narración de contenido, Pictogramas de apoyo)</span>
+
+            <button role="button" data-profile="Usuario con Adaptaciones Motoras" aria-label="Acceder con perfil para adaptaciones motoras.">
+                🧑‍🦼 Perfil Motor (Movilidad Reducida)
+                <span>Navegación completa y lógica solo con teclado (Tab/Enter).</span>
             </button>
         </div>
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Acceso para todos.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
     </footer>
+
     <script src="../assets/js/script.js"></script>
 </body>
 </html>
