@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EducaTech Inclusiva | Aulas Virtuales Inclusivas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/accessibility.css">
 </head>
@@ -16,12 +17,15 @@
     </aside>
 
     <header role="banner">
-        <h1>EducaTech Inclusiva S.A.C.</h1>
+        <a href="index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo"> 
+        </a>
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
-                <li><a href="#about" aria-current="page">Inicio</a></li>
-                <li><a href="docs/standards.html">Estándares</a></li>
-                <li><a href="pages/login.html">Acceder</a></li>
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <li><a href="docs/standards.html">Nuestro Compromiso</a></li>
+                <li><a href="pages/dashboard.html">Mi Dashboard</a></li>
+                <li><a href="pages/login.html">Acceso Adaptado</a></li>
             </ul>
         </nav>
     </header>
@@ -30,29 +34,34 @@
 
         <section id="hero" class="hero-section" aria-labelledby="hero-title">
             <h2 id="hero-title">Educación Sin Barreras: Aulas Virtuales Inclusivas</h2>
-            <p>Plataforma digital accesible, funcional e interactiva, diseñada bajo los principios de Accesibilidad Universal (WCAG 2.1).</p>
-            <a href="pages/login.html" class="button button-primary">Iniciar Experiencia Inclusiva</a>
-            
+            <p>Nuestra plataforma digital es un ecosistema educativo accesible, funcional e interactivo, diseñado bajo los principios de **Accesibilidad Universal (WCAG 2.1)** y educación inclusiva.</p>
+            <a href="pages/login.html" class="button button-primary">Descubre tu Experiencia</a>
         </section>
 
         <section id="links" class="features-section" aria-labelledby="links-title">
-            <h2 id="links-title">Nuestra Propuesta de Valor Inclusivo</h2>
+            <h2 id="links-title">Valores y Recursos Clave</h2>
             <div class="link-grid">
-                <a href="docs/standards.html" class="card-link" role="link">🌍 Compromiso: ISO, ODS y WCAG</a>
-                <a href="classes/class-module-1.html" class="card-link" role="link">🧩 Simular Aula Virtual</a>
-                <a href="pages/login.html" class="card-link special-link" role="link">👤 Simulación de Acceso Adaptativo</a>
+                <a href="docs/standards.html" class="card-link" role="link">🌍 Nuestro Compromiso: ISO, ODS y WCAG</a>
+                <a href="pages/dashboard.html" class="card-link" role="link">🧩 Explorar Aulas Virtuales</a>
+                <a href="pages/login.html" class="card-link special-link" role="link">👤 Iniciar Acceso Adaptado</a>
             </div>
         </section>
         
-        <section id="components" class="features-section" aria-labelledby="components-title">
+        <section id="components-summary" class="features-section" aria-labelledby="components-title">
             <h2 id="components-title">⚙️ Herramientas Inclusivas Integradas</h2>
-            <p>Garantizamos accesibilidad para discapacidad visual, auditiva, cognitiva y motriz.</p>
+            <p>Garantizamos una experiencia educativa completa para todas las personas, independientemente de sus necesidades:</p>
+            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <li style="background: white; padding: 20px; border-left: 5px solid var(--secondary-color); border-radius: 5px;">**Lectores de Pantalla y Audiodescripciones:** Para usuarios con discapacidad visual.</li>
+                <li style="background: white; padding: 20px; border-left: 5px solid var(--primary-color); border-radius: 5px;">**Subtítulos y Lengua de Señas Digital:** Para usuarios con discapacidad auditiva.</li>
+                <li style="background: white; padding: 20px; border-left: 5px solid var(--secondary-color); border-radius: 5px;">**Narraciones y Pictogramas:** Para usuarios con discapacidad cognitiva.</li>
+                <li style="background: white; padding: 20px; border-left: 5px solid var(--primary-color); border-radius: 5px;">**Control por Voz y Dispositivos Adaptativos:** Para usuarios con limitaciones motrices.</li>
+            </ul>
         </section>
 
     </main>
 
     <footer role="contentinfo">
-        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Comprometidos con WCAG 2.1, ISO 9001 y ISO 14001.</p>
+        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Construyendo un futuro educativo para todos.</p>
     </footer>
 
     <script src="assets/js/script.js"></script>
