@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Dashboard | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
+                <li><a href="#" aria-current="page">Mi Dashboard</a></li>
+                <li><a href="../pages/login.html">Acceso Adaptado</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section" aria-labelledby="dashboard-title" style="background: linear-gradient(135deg, #e0f2f7, #d4edf5);">
+            <h2 id="dashboard-title">¡Bienvenido a tu Dashboard Personalizado!</h2>
+            <p>Aquí encontrarás tus cursos, progreso y herramientas adaptadas a tu perfil.</p>
+            <p id="profile-message" style="font-weight: bold; color: var(--primary-color); font-size: 1.1em;"></p>
+            <a href="../classes/class-module-1.html" class="button button-primary">Ir a tus Aulas</a>
+        </section>
+
+        <section style="padding: 30px 0;">
+            <h3>Mis Cursos Activos</h3>
+            <div class="link-grid">
+                <a href="../classes/class-module-1.html" class="card-link">📚 Módulo 1: Introducción a la Sostenibilidad</a>
+                <a href="#" class="card-link">📝 Módulo 2: Matemáticas para Todos</a>
+                <a href="#" class="card-link">🗣️ Módulo 3: Comunicación Efectiva</a>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Tu éxito es nuestra misión.</p>
+    </footer>
+    <script src="../assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener el tipo de perfil de la URL (si viene del login)
+            const urlParams = new URLSearchParams(window.location.search);
+            const profile = urlParams.get('profile');
+            const profileMessageElement = document.getElementById('profile-message');
+
+            if (profile) {
+                let displayProfile = "";
+                switch(profile) {
+                    case 'visual': displayProfile = "visual optimizada"; break;
+                    case 'auditiva': displayProfile = "auditiva optimizada"; break;
+                    case 'motriz': displayProfile = "motriz optimizada"; break;
+                    case 'cognitiva': displayProfile = "cognitiva optimizada"; break;
+                    default: displayProfile = "estándar"; break;
+                }
+                profileMessageElement.textContent = `Has accedido con una experiencia ${displayProfile}.`;
+            } else {
+                profileMessageElement.textContent = "Bienvenido/a. Explora tus cursos adaptados.";
+            }
+
+            // La lógica de persistencia del script.js ya se encarga de aplicar los estilos de accesibilidad.
+        });
+    </script>
+</body>
+</html>
