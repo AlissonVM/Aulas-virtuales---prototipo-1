@@ -1,0 +1,29 @@
+/* ======================== */
+/* Alto Contraste (Modo para Baja Visión) */
+/* ======================== */
+/* Filtro CSS para invertir colores de la página */
+body.high-contrast {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* El widget de accesibilidad debe ser excluido de la inversión */
+body.high-contrast #accessibility-widget {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* ======================== */
+/* Modo Lector (Modo Cognitivo / Dislexia) */
+/* ======================== */
+body.reader-mode {
+    /* Simula la aplicación de una fuente disléxica o muy legible */
+    font-family: 'Verdana', sans-serif !important; 
+    line-height: 2 !important; /* Mayor espaciado entre líneas */
+    letter-spacing: 1px; /* Mayor espaciado entre letras */
+    background-color: #f7f3e8; /* Color crema suave para reducir el deslumbramiento */
+}
+
+/* En modo lector, los enlaces se subrayan para mayor claridad */
+body.reader-mode a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
