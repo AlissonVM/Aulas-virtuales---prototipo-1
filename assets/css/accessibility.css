@@ -1,29 +1,77 @@
-/* ======================== */
-/* Alto Contraste (Modo para Baja Visión) */
-/* ======================== */
-/* Filtro CSS para invertir colores de la página */
+/* ================================================= */
+/* Estilos Exclusivos para el Modo de Alto Contraste */
+/* ================================================= */
+
 body.high-contrast {
-    filter: invert(1) hue-rotate(180deg);
+    /* Colores estrictos para contraste AA/AAA */
+    background-color: black;
+    color: white;
 }
 
-/* El widget de accesibilidad debe ser excluido de la inversión */
-body.high-contrast #accessibility-widget {
-    filter: invert(1) hue-rotate(180deg);
+body.high-contrast header, 
+body.high-contrast .learning-resource,
+body.high-contrast .course-card,
+body.high-contrast .profile-selector button {
+    background-color: #1a1a1a;
+    border-color: white !important;
+    color: white;
 }
 
-/* ======================== */
-/* Modo Lector (Modo Cognitivo / Dislexia) */
-/* ======================== */
-body.reader-mode {
-    /* Simula la aplicación de una fuente disléxica o muy legible */
-    font-family: 'Verdana', sans-serif !important; 
-    line-height: 2 !important; /* Mayor espaciado entre líneas */
-    letter-spacing: 1px; /* Mayor espaciado entre letras */
-    background-color: #f7f3e8; /* Color crema suave para reducir el deslumbramiento */
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4 {
+    color: yellow; /* Color de acento de alto contraste */
 }
 
-/* En modo lector, los enlaces se subrayan para mayor claridad */
-body.reader-mode a {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+body.high-contrast a,
+body.high-contrast nav a:hover,
+body.high-contrast nav a[aria-current="page"] {
+    color: lightblue;
+    border-color: lightblue;
+}
+
+body.high-contrast .progress-bar-container {
+    background-color: #333;
+}
+body.high-contrast .progress-bar-fill {
+    background-color: yellow;
+}
+body.high-contrast .progress-bar-text {
+    color: white;
+}
+body.high-contrast .button-primary:hover {
+    background-color: darkred;
+}
+
+/* =================================================== */
+/* Estilos Exclusivos para el Modo Lector (Cognitivo) */
+/* =================================================== */
+
+body.reader-active {
+    font-family: sans-serif !important; /* Fuente limpia y sin serifa para dislexia */
+    line-height: 1.8;
+}
+
+/* Simulación de Pictogramas: añadir iconos antes de cada párrafo en el recurso de aprendizaje */
+body.reader-active .learning-resource p.resource-note::before,
+body.reader-active .learning-resource p::before {
+    content: "💡 ";
+    font-size: 1.2em;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+body.reader-active .learning-resource h3::before {
+    content: "📘 ";
+    font-size: 1.2em;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+/* Estilo para transcripción simplificada */
+body.reader-active .transcript-content p {
+    font-family: inherit; /* Remover el monospace para mejorar la legibilidad */
+    font-size: 1em;
+    font-weight: 500;
 }
