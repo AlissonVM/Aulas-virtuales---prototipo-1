@@ -12,9 +12,14 @@
     --max-width: 1200px;
 }
 
+/* Para poder usar colores RGB en el JS y CSS */
+.video-placeholder {
+    --primary-color-rgb: 93, 61, 143; /* RGB de #5d3d8f */
+}
+
 body {
-    font-family: 'Open Sans', Arial, sans-serif; /* Fuente moderna y legible */
-    line-height: 1.7; /* Mayor legibilidad */
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.7; 
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
@@ -44,7 +49,7 @@ a:focus, button:focus, .card-link:focus {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background: var(--primary-color); /* Widget con color primario */
+    background: var(--primary-color);
     padding: 10px;
     z-index: 1000;
     display: flex;
@@ -82,7 +87,7 @@ header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 header .logo {
-    height: 40px; /* Tamaño del logo */
+    height: 40px;
     width: auto;
 }
 nav ul {
@@ -116,20 +121,8 @@ main {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
-.hero-section h2 {
-    color: var(--primary-color);
-    font-size: 2.8em;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-.hero-section p {
-    font-size: 1.2em;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-}
 .button-primary {
-    background-color: var(--secondary-color); /* Botón con color turquesa */
+    background-color: var(--secondary-color);
     color: white;
     padding: 15px 35px;
     text-decoration: none;
@@ -139,7 +132,7 @@ main {
     transition: background-color 0.3s, transform 0.2s;
 }
 .button-primary:hover {
-    background-color: var(--primary-color); /* Hover a morado */
+    background-color: var(--primary-color);
     transform: translateY(-2px);
 }
 
@@ -158,7 +151,7 @@ main {
     border: 1px solid #eee;
     border-radius: 12px;
     text-decoration: none;
-    color: var(--primary-color); /* Texto de tarjeta con color primario */
+    color: var(--primary-color);
     font-weight: 700;
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -171,7 +164,7 @@ main {
     border-color: var(--secondary-color);
 }
 .card-link.special-link {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Gradiente para el link de acceso adaptado */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     color: white;
 }
 .card-link.special-link:hover {
@@ -228,7 +221,7 @@ main {
 }
 .video-placeholder {
     width: 100%;
-    height: 350px; /* Altura fija para el placeholder de video */
+    height: 350px;
     background-color: #e0e0e0;
     border-radius: 8px;
     display: flex;
@@ -238,10 +231,11 @@ main {
     font-size: 1.5em;
     margin-bottom: 20px;
     position: relative;
-    overflow: hidden; /* Para simular los elementos superpuestos */
+    overflow: hidden;
+    border: 1px solid #ccc;
 }
 .video-placeholder::before {
-    content: "▶️"; /* Icono de play */
+    content: "▶️";
     font-size: 3em;
     position: absolute;
     color: rgba(0,0,0,0.3);
@@ -258,9 +252,10 @@ main {
     font-size: 0.9em;
     text-align: center;
     box-sizing: border-box;
+    transition: all 0.3s; /* Para una transición suave */
 }
 .video-placeholder .sign-language-overlay {
-    width: 25%; /* Tamaño de la ventana de lengua de señas */
+    width: 25%;
     height: 35%;
     right: 0;
     left: auto;
@@ -272,6 +267,7 @@ main {
     justify-content: center;
     font-size: 0.7em;
     background-color: rgba(var(--primary-color-rgb), 0.8);
+    border: 2px solid var(--secondary-color);
 }
 
 /* Footer */
