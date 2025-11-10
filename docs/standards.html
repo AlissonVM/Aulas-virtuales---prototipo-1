@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compromiso Global | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="#" aria-current="page">Nuestro Compromiso</a></li>
+                <li><a href="../pages/dashboard.html">Mi Dashboard</a></li>
+                <li><a href="../pages/login.html">Acceso Adaptado</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main role="main">
+        <section class="hero-section" aria-labelledby="standards-title" style="background: linear-gradient(135deg, #f0faff, #e0f2f7);">
+            <h2 id="standards-title">🌍 Nuestro Compromiso: Calidad, Inclusión y Sostenibilidad</h2>
+            <p>El proyecto "Aulas Virtuales Inclusivas" está fundamentado en criterios éticos, tecnológicos y ambientales, garantizando un impacto positivo.</p>
+        </section>
+
+        <div class="link-grid" style="grid-template-columns: 1fr;">
+            <article role="region" aria-labelledby="wcag-title" class="card-link" style="text-align: left; border-left: 5px solid var(--secondary-color);">
+                <h3 id="wcag-title">☑️ Estándares de Accesibilidad Web: WCAG 2.1</h3>
+                <p>Todo el desarrollo de nuestra plataforma cumple con los criterios de las Web Content Accessibility Guidelines (WCAG) 2.1 Nivel AA. Esto asegura que el contenido es **Perceptible, Operable, Comprensible y Robusto** para cualquier persona.</p>
+                <ul>
+                    <li>**Interfaz Adaptable:** Personalización de tamaño de letra, contraste y control por voz/teclado.</li>
+                    <li>**Contenido Multimedia Accesible:** Audiodescripciones, subtítulos sincronizados, y lenguaje de señas digital.</li>
+                </ul>
+            </article>
+
+            <article role="region" aria-labelledby="iso-title" class="card-link" style="text-align: left; border-left: 5px solid var(--primary-color);">
+                <h3 id="iso-title">✅ Certificaciones de Gestión: ISO 9001 y 14001</h3>
+                <p>Nuestra dedicación a la excelencia y la responsabilidad:</p>
+                <ul>
+                    <li>**ISO 9001 (Gestión de Calidad):** Implementada en el diseño de los **Módulos Interactivos de Aprendizaje** y el **Panel de Análisis y Seguimiento**, garantizando un proceso educativo de alta calidad y mejora continua.</li>
+                    <li>**ISO 14001 (Gestión Ambiental):** Fomentamos el uso responsable de recursos tecnológicos, eliminando el uso de materiales impresos y utilizando servidores de bajo consumo energético para reducir nuestra huella ecológica.</li>
+                </ul>
+            </article>
+
+             <article role="region" aria-labelledby="ods-title" class="card-link" style="text-align: left; border-left: 5px solid var(--secondary-color);">
+                <h3 id="ods-title">🎯 Contribución a los Objetivos de Desarrollo Sostenible (ODS)</h3>
+                <p>El proyecto "Aulas Virtuales Inclusivas" de EducaTech contribuye directamente a los siguientes ODS:</p>
+                <p><strong>ODS 4: Educación de Calidad:</strong> Garantizando el acceso equitativo, inclusivo y de calidad para estudiantes con discapacidad, fortaleciendo la igualdad de oportunidades y la educación a lo largo de la vida.</p>
+                <p><strong>ODS 10: Reducción de las Desigualdades:</strong> Trabajamos activamente para reducir la brecha digital y educativa, especialmente en comunidades vulnerables, promoviendo la inclusión social, económica y política de todas las personas.</p>
+            </article>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Innovando para un mundo más inclusivo.</p>
+    </footer>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
