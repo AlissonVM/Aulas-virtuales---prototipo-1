@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Adaptado | EducaTech Inclusiva</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <main role="main">
+        <section style="text-align: center; padding: 40px 20px;">
+            <h2>👤 Simulación de Inicio de Sesión Inclusivo</h2>
+            <p>Selecciona tu perfil para ver cómo la plataforma **EducaTech** se adapta automáticamente a tus necesidades de accesibilidad.</p>
+        </section>
+
+        <div class="profile-selector" role="group" aria-label="Selección de Perfil de Discapacidad">
+            <button onclick="simulateLogin('visual')" aria-label="Iniciar Sesión como Usuario con Discapacidad Visual. Activa Lector y Alto Contraste.">
+                👁️‍🗨️ **Discapacidad Visual**
+                <br><span>(Activa Lector, Alto Contraste, Fuentes Grandes)</span>
+            </button>
+            <button onclick="simulateLogin('auditiva')" aria-label="Iniciar Sesión como Usuario con Discapacidad Auditiva. Activa Subtítulos por defecto.">
+                👂 **Discapacidad Auditiva**
+                <br><span>(Activa Subtítulos obligatorios, Transcripciones)</span>
+            </button>
+            <button onclick="simulateLogin('motriz')" aria-label="Iniciar Sesión como Usuario con Discapacidad Motriz. Activa Navegación por Teclado/Comandos de Voz.">
+                ♿ **Discapacidad Motriz**
+                <br><span>(Foco visible grande, Optimización de comandos de voz)</span>
+            </button>
+            <button onclick="simulateLogin('cognitiva')" aria-label="Iniciar Sesión como Usuario con Discapacidad Cognitiva. Activa Modo Simplificado y Pictogramas.">
+                🧠 **Discapacidad Cognitiva**
+                <br><span>(Modo Simplificado, Texto sin serifa, Pictogramas)</span>
+            </button>
+        </div>
+    </main>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
