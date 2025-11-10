@@ -10,6 +10,8 @@
     --light-bg-color: #ffffff;
     --font-size-base: 16px;
     --max-width: 1200px;
+    --border-radius-base: 8px; /* Variable para radio de borde */
+    --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); /* Variable para sombra */
 }
 
 body {
@@ -28,6 +30,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 h2 { font-size: 2.2em; }
 h3 { font-size: 1.6em; }
+ul {
+    list-style: none; /* Limpieza general de listas */
+    padding: 0;
+}
 
 /* ======================== */
 /* Accesibilidad por Defecto (WCAG) */
@@ -111,27 +117,49 @@ main {
 .hero-section {
     text-align: center;
     padding: 80px 20px;
-    background: linear-gradient(135deg, #e9f5ff, #f0faff);
     margin-bottom: 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
 }
+
+/* Estilos de Hero Específicos */
+.hero-home {
+    background: linear-gradient(135deg, #e9f5ff, #f0faff);
+}
+.hero-dashboard {
+    background: linear-gradient(135deg, #d4f2f7, #d4edf5);
+}
+.hero-class {
+    background: linear-gradient(135deg, #d4f7e0, #e6fced);
+}
+
 .button-primary {
     background-color: var(--secondary-color);
     color: white;
     padding: 15px 35px;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius-base);
     display: inline-block;
     font-weight: bold;
     transition: background-color 0.3s, transform 0.2s;
+    border: none; /* Asegura que no haya bordes por defecto */
+    cursor: pointer;
 }
 .button-primary:hover {
     background-color: var(--primary-color);
     transform: translateY(-2px);
 }
+/* Clases de apoyo para botones */
+.button-accent { background-color: var(--accent-color); }
+.button-secondary { background-color: #6c757d; }
+.button-accent:hover { background-color: #e08b1a; }
+.button-secondary:hover { background-color: #5a6268; }
+
 
 /* Grid de Enlaces/Features */
+.section-container {
+    padding: 0 20px;
+}
 .link-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -201,12 +229,72 @@ main {
     color: #e0e0e0;
 }
 
+/* Estilos de Dashboard */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    height: 30px;
+    margin-top: 15px;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 45%; /* Ajusta este valor en CSS si deseas cambiar el progreso */
+    background-color: var(--secondary-color);
+    border-radius: inherit;
+    transition: width 0.6s ease;
+}
+.progress-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 30px;
+    font-size: 0.9em;
+}
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+    color: var(--primary-color);
+}
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+.course-card {
+    padding: 25px;
+    background: var(--light-bg-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.course-card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+.course-card .button-primary {
+    margin-top: 15px;
+}
+.course-card.course-pending {
+    opacity: 0.7;
+    border-color: #aaa;
+}
+.course-card .button-primary[aria-disabled="true"] {
+    pointer-events: none;
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 /* Estilos para las Aulas (classes/class-module-1.html) */
 .learning-resource {
     background: var(--light-bg-color);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-base);
     margin-bottom: 40px;
 }
 .learning-resource h3 {
@@ -215,19 +303,38 @@ main {
     margin-bottom: 15px;
 }
 .video-container {
-    /* Define el área donde se mostrará el video */
+    /* Implementación de Aspect Ratio 16:9 para videos incrustados */
     position: relative;
     width: 100%;
-    height: 400px; 
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 * 100) */
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: var(--border-radius-base);
+    margin-bottom: 20px;
 }
 .video-container iframe {
-    /* Asegura que el reproductor ocupe todo el contenedor */
+    /* Hace que el iframe ocupe el 100% del contenedor con Aspect Ratio */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: none;
 }
+.video-caption {
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
+}
+.resource-note {
+    margin-top: 20px;
+}
+.resource-list {
+    margin-top: 10px;
+}
+.resource-list li {
+    margin-bottom: 5px;
+}
+
 
 /* Footer */
 footer {
@@ -264,14 +371,11 @@ footer {
         width: 100%;
         box-sizing: border-box;
     }
-    .link-grid {
+    .link-grid, .course-list {
         grid-template-columns: 1fr;
     }
     .profile-selector button {
         font-size: 1.1em;
         padding: 20px;
-    }
-    .video-container {
-        height: 250px;
     }
 }
