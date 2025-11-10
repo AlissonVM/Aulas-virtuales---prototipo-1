@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula Virtual: Módulo Sostenibilidad</title>
+    <title>Aula Virtual: Módulo 1 Sostenibilidad | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/accessibility.css"> 
 </head>
@@ -15,37 +16,64 @@
     </aside>
 
     <header role="banner">
-        <h1>Aula Virtual - Matemáticas Inclusivas</h1>
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
+                <li><a href="../pages/dashboard.html">Mi Dashboard</a></li>
+                <li><a href="../pages/login.html">Acceso Adaptado</a></li>
+            </ul>
+        </nav>
     </header>
     
     <main role="main" id="class-main" style="max-width: 900px;">
-        <h2 aria-describedby="class-details">Clase 1: Introducción a las Fracciones</h2>
-        <p id="class-details">Este es un ejemplo de un módulo de aprendizaje. Si iniciaste sesión con un perfil adaptativo, las configuraciones (Contraste, Fuente) se aplicaron aquí automáticamente.</p>
-
-        <article class="learning-resource" style="background: white; padding: 20px; border-radius: 8px;">
-            <h3>🎥 Video Lección: Concepto Básico de Mitades</h3>
-            
-            <figure style="border: 2px solid #ccc; padding: 10px; text-align: center;">
-                [Placeholder de Video con Subtítulos y Ventana de Lenguaje de Señas Digital]
-                <figcaption>Video con **audio-descripción** (para usuarios visuales) y **subtítulos sincronizados** (para usuarios auditivos).</figcaption>
-            </figure>
-            
-            <p><strong>Recurso de Apoyo Cognitivo:</strong> Utiliza el modo lector para simplificar el lenguaje.</p>
-            <p><strong>Ejemplo con Pictogramas:</strong> [Icono de Pizza] dividido por [Icono de Cuchillo] es igual a [Icono de Media Pizza].</p>
-        </article>
-        
-        <section style="margin-top: 40px;">
-             <h3>📝 Evaluación Adaptativa</h3>
-             <p>El sistema ajusta la dificultad y el ritmo según el progreso individual (Simulación de **Módulos Interactivos de Aprendizaje**).</p>
+        <section class="hero-section" style="background: linear-gradient(135deg, #d4f7e0, #e6fced);">
+            <h2 aria-describedby="class-details">Módulo 1: Fundamentos de la Sostenibilidad (ISO 14001)</h2>
+            <p id="class-details">Bienvenido al primer módulo. Tu interfaz se ha adaptado a tus necesidades para garantizar la mejor experiencia de aprendizaje.</p>
         </section>
 
-        <a href="../index.html" class="button-primary" style="margin-top: 30px;">Volver al Inicio</a>
+        <article class="learning-resource">
+            <h3>🎥 Video Lección: Introducción al Reciclaje Inclusivo</h3>
+            
+            <div class="video-placeholder" role="img" aria-label="Video explicativo sobre reciclaje inclusivo">
+                ¡Aquí iría tu video\!
+                <div class="subtitle-overlay">
+                    [**SUBTÍTULOS:** "El reciclaje es una acción que beneficia a todos, sin importar nuestras capacidades."]
+                </div>
+                <div class="sign-language-overlay">
+                    [**LENGUA DE SEÑAS:** Interpretación simultánea]
+                </div>
+            </div>
+            
+            <figcaption style="margin-top: 15px; font-style: italic; color: #555;">Este video incluye **audio-descripción detallada** para personas con discapacidad visual y **subtítulos interactivos** junto a una ventana de **lengua de señas digital** para personas con discapacidad auditiva.</figcaption>
+            
+            <p style="margin-top: 20px;"><strong>Recurso de Apoyo Cognitivo (Modo Lector):</strong> Utiliza el modo lector de pantalla para simplificar el lenguaje y ver pictogramas de apoyo para comprender mejor los pasos del reciclaje.</p>
+            <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                <li>♻️ **Paso 1:** Separar residuos (Papel, Plástico, Vidrio).</li>
+                <li>🚮 **Paso 2:** Depositar en el contenedor correcto.</li>
+                <li>🌎 **Paso 3:** ¡Cuidar nuestro planeta\!</li>
+            </ul>
+        </article>
+        
+        <section class="learning-resource">
+             <h3>📝 Evaluación Interactiva: ¿Cuánto sabes de Sostenibilidad?</h3>
+             <p>Este sistema ajusta la dificultad y el ritmo de las preguntas según tu progreso individual, permitiendo un aprendizaje adaptado (Simulación de **Módulos Interactivos de Aprendizaje**).</p>
+             <a href="#" class="button-primary" style="background-color: var(--accent-color);">Comenzar Evaluación</a>
+        </section>
+
+        <a href="../pages/dashboard.html" class="button-primary" style="margin-top: 30px; background-color: #6c757d;">Volver a Mi Dashboard</a>
     </main>
 
+    <footer role="contentinfo">
+        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Módulo de Aprendizaje.</p>
+    </footer>
     <script src="../assets/js/script.js"></script>
     <script>
-        // Cargar las configuraciones guardadas al cargar la página
-        // La lógica en script.js ya maneja la persistencia de los estilos.
+        // La lógica de persistencia del script.js ya se encarga de aplicar los estilos de accesibilidad
+        // al cargar la página, sin necesidad de código adicional aquí.
     </script>
 </body>
 </html>
