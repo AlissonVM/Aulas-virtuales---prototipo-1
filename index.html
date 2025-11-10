@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EducaTech Inclusiva | Aulas Virtuales Inclusivas</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+</head>
+<body>
+
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <h1>EducaTech Inclusiva S.A.C.</h1>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="#about" aria-current="page">Inicio</a></li>
+                <li><a href="docs/standards.html">Estándares</a></li>
+                <li><a href="pages/login.html">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main role="main">
+
+        <section id="hero" class="hero-section" aria-labelledby="hero-title">
+            <h2 id="hero-title">Educación Sin Barreras: Aulas Virtuales Inclusivas</h2>
+            <p>Plataforma digital accesible, funcional e interactiva, diseñada bajo los principios de **Accesibilidad Universal (WCAG 2.1)**.</p>
+            <a href="pages/login.html" class="button button-primary">Iniciar Experiencia Inclusiva</a>
+            
+        </section>
+
+        <section id="links" class="features-section" aria-labelledby="links-title">
+            <h2 id="links-title">Nuestra Propuesta de Valor Inclusivo</h2>
+            <div class="link-grid">
+                <a href="docs/standards.html" class="card-link" role="link">🌍 Compromiso: ISO, ODS y WCAG</a>
+                <a href="classes/class-module-1.html" class="card-link" role="link">🧩 Simular Aula Virtual</a>
+                <a href="pages/login.html" class="card-link special-link" role="link">👤 Simulación de Acceso Adaptativo</a>
+            </div>
+        </section>
+        
+        <section id="components" class="features-section" aria-labelledby="components-title">
+            <h2 id="components-title">⚙️ Herramientas Inclusivas Integradas</h2>
+            <p>Garantizamos accesibilidad para discapacidad **visual, auditiva, cognitiva y motriz**.</p>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 EducaTech Inclusiva S.A.C. | Comprometidos con WCAG 2.1, ISO 9001 y ISO 14001.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
