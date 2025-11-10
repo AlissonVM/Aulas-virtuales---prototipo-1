@@ -6,7 +6,7 @@
     <title>Mi Dashboard | EducaTech Inclusiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/accessibility.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
 </head>
 <body>
     <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
@@ -23,55 +23,49 @@
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
-                <li><a href="#" aria-current="page">Mi Dashboard</a></li>
+                <li><a href="../pages/dashboard.html" aria-current="page">Mi Dashboard</a></li>
                 <li><a href="../pages/login.html">Acceso Adaptado</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section class="hero-section" aria-labelledby="dashboard-title" style="background: linear-gradient(135deg, #e0f2f7, #d4edf5);">
+        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-title">
             <h2 id="dashboard-title">¡Bienvenido a tu Dashboard Personalizado!</h2>
-            <p>Aquí encontrarás tus cursos, progreso y herramientas adaptadas a tu perfil.</p>
-            <p id="profile-message" style="font-weight: bold; color: var(--primary-color); font-size: 1.1em;"></p>
-            <a href="../classes/class-module-1.html" class="button button-primary">Ir a tus Aulas</a>
+            <p>Aquí puedes ver tu progreso y acceder rápidamente a tus cursos adaptados.</p>
         </section>
 
-        <section style="padding: 30px 0;">
-            <h3>Mis Cursos Activos</h3>
-            <div class="link-grid">
-                <a href="../classes/class-module-1.html" class="card-link">📚 Módulo 1: Introducción a la Sostenibilidad</a>
-                <a href="#" class="card-link">📝 Módulo 2: Matemáticas para Todos</a>
-                <a href="#" class="card-link">🗣️ Módulo 3: Comunicación Efectiva</a>
+        <section class="section-container" aria-labelledby="progress-heading">
+            <h3 id="progress-heading">Tu Progreso</h3>
+            <div class="progress-bar-container" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso general del 45%">
+                <div class="progress-bar-fill"></div>
+                <span class="progress-bar-text">45% Completado</span>
+            </div>
+            <p class="status-message">¡Sigue así! Estás a punto de completar el módulo de Sostenibilidad.</p>
+        </section>
+
+        <section class="section-container" aria-labelledby="courses-heading">
+            <h3 id="courses-heading">Mis Cursos Activos</h3>
+            <div class="course-list">
+                <div class="course-card">
+                    <h4>ISO 14001: Fundamentos de la Sostenibilidad</h4>
+                    <p>Acceso al primer módulo y la evaluación. ¡Continúa tu aprendizaje!</p>
+                    <a href="../classes/class-module-1.html" class="button-primary">Ir al Curso</a>
+                </div>
+                <div class="course-card course-pending">
+                    <h4>Auditoría de Sistemas de Gestión Inclusiva</h4>
+                    <p>Próximo curso. Requiere la finalización del Módulo 1.</p>
+                    <a href="#" class="button-primary disabled" aria-disabled="true">Bloqueado</a>
+                </div>
             </div>
         </section>
-        
+
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Tu éxito es nuestra misión.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
     </footer>
-    <script src="../assets/js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const profile = urlParams.get('profile');
-            const profileMessageElement = document.getElementById('profile-message');
 
-            if (profile) {
-                let displayProfile = "";
-                switch(profile) {
-                    case 'visual': displayProfile = "visual optimizada"; break;
-                    case 'auditiva': displayProfile = "auditiva optimizada"; break;
-                    case 'motriz': displayProfile = "motriz optimizada"; break;
-                    case 'cognitiva': displayProfile = "cognitiva optimizada"; break;
-                    default: displayProfile = "estándar"; break;
-                }
-                profileMessageElement.textContent = `Has accedido con una experiencia ${displayProfile}.`;
-            } else {
-                profileMessageElement.textContent = "Bienvenido/a. Explora tus cursos adaptados.";
-            }
-        });
-    </script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
