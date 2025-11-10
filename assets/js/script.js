@@ -1,127 +1,143 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Lógica de Accesibilidad y Persistencia de Sesión
+ */
+(function() {
+    const root = document.documentElement;
     const body = document.body;
     const contrastToggle = document.getElementById('contrast-toggle');
     const fontToggle = document.getElementById('font-toggle');
     const readerToggle = document.getElementById('reader-toggle');
+    const widget = document.getElementById('accessibility-widget');
+    
+    // Configuración Inicial
+    let currentFontSize = 100; // Porcentaje de tamaño de fuente
+    let ttsActive = false; // Estado del Text-to-Speech
 
-    let isReaderActive = false;
-    let currentFontSize = parseFloat(localStorage.getItem('accessibility-font-size')) || 16;
-    body.style.fontSize = `${currentFontSize}px`;
+    // --- 1. Persistencia de Opciones ---
+    function loadAccessibilityState() {
+        const savedContrast = localStorage.getItem('contrastMode');
+        const savedFont = localStorage.getItem('fontSize');
+        const savedTTS = localStorage.getItem('ttsActive');
 
-    // Función principal para la narración (TTS - Text-to-Speech)
-    function speakText(text) {
-        if ('speechSynthesis' in window && isReaderActive) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'es-ES';
-            window.speechSynthesis.speak(utterance);
+        if (savedContrast === 'active') {
+            body.classList.add('high-contrast');
+        }
+
+        if (savedFont) {
+            currentFontSize = parseInt(savedFont);
+            root.style.fontSize = currentFontSize + '%';
+        }
+
+        if (savedTTS === 'true') {
+            ttsActive = true;
+            readerToggle.textContent = 'Lector 🔇';
+            // Aplicar escuchadores de TTS solo si está activo
+            setupTTSListeners();
         }
     }
 
-    // === 1. Lógica del Widget de Accesibilidad ===
-
-    // A. Alto Contraste
-    if (contrastToggle) {
-        contrastToggle.addEventListener('click', () => {
-            body.classList.toggle('high-contrast');
-            const isHighContrast = body.classList.contains('high-contrast');
-            localStorage.setItem('accessibility-contrast', isHighContrast ? 'enabled' : 'disabled');
-            speakText(`Modo de Contraste ${isHighContrast ? 'Activado' : 'Desactivado'}`);
-        });
-    }
-
-    // B. Tamaño de Fuente
-    if (fontToggle) {
-        fontToggle.addEventListener('click', () => {
-            currentFontSize = currentFontSize * 1.1; 
-            if (currentFontSize > 24) { 
-                currentFontSize = 16;
-            }
-            body.style.fontSize = `${currentFontSize}px`;
-            localStorage.setItem('accessibility-font-size', currentFontSize);
-            speakText(`Tamaño de Fuente ajustado a ${Math.round(currentFontSize)} píxeles.`);
-        });
-    }
-
-    // C. Lector de Pantalla (TTS y Modo Cognitivo)
-    if (readerToggle) {
-        readerToggle.addEventListener('click', () => {
-            isReaderActive = !isReaderActive;
-            body.classList.toggle('reader-mode', isReaderActive);
-            localStorage.setItem('accessibility-reader', isReaderActive ? 'enabled' : 'disabled');
-            
-            const status = isReaderActive ? 'Activado' : 'Desactivado';
-            speakText(`Lector de Pantalla y Modo Simplificado: ${status}.`);
-            
-            if (!isReaderActive) {
-                 window.speechSynthesis.cancel();
-            }
-        });
+    // --- 2. Funciones de Navegación/Lógica ---
+    function speakText(text) {
+        if (!ttsActive) return;
         
-        // Mejora: Narración al enfocar/hover (simula el comportamiento del lector real)
-        document.querySelectorAll('h1, h2, h3, p, a, button, li, figcaption').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                if (isReaderActive) {
-                    speakText(element.textContent);
-                }
+        // Detener la narración anterior si existe
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = 'es-ES'; 
+        window.speechSynthesis.speak(speech);
+    }
+
+    function setupTTSListeners() {
+        // Seleccionar todos los elementos interactivos que queremos narrar
+        const interactives = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
+
+        interactives.forEach(element => {
+            // El evento 'focus' es crucial para la accesibilidad por teclado
+            element.addEventListener('focus', function() {
+                // Usar el aria-label si existe, sino, usar el texto
+                const textToSpeak = element.getAttribute('aria-label') || element.textContent;
+                speakText(textToSpeak.trim());
             });
-            element.addEventListener('focus', () => { // Para navegación por teclado
-                if (isReaderActive) {
-                    speakText(element.textContent);
-                }
-            });
-            element.addEventListener('mouseleave', () => { // Detener al salir
-                if (isReaderActive) {
-                    window.speechSynthesis.cancel();
-                }
-            });
-            element.addEventListener('blur', () => { // Detener al perder foco
-                if (isReaderActive) {
+            // El evento 'blur' es para detener la narración al salir del elemento
+            element.addEventListener('blur', function() {
+                if (window.speechSynthesis.speaking) {
                     window.speechSynthesis.cancel();
                 }
             });
         });
     }
 
-    // === 2. Lógica de Persistencia de Estado ===
-    if (localStorage.getItem('accessibility-contrast') === 'enabled') {
-        body.classList.add('high-contrast');
+    // --- 3. Escuchadores de Eventos del Widget ---
+
+    contrastToggle.addEventListener('click', () => {
+        body.classList.toggle('high-contrast');
+        const isContrastActive = body.classList.contains('high-contrast');
+        localStorage.setItem('contrastMode', isContrastActive ? 'active' : 'inactive');
+    });
+
+    fontToggle.addEventListener('click', () => {
+        if (currentFontSize === 150) {
+            currentFontSize = 100;
+        } else {
+            currentFontSize += 10;
+        }
+        root.style.fontSize = currentFontSize + '%';
+        localStorage.setItem('fontSize', currentFontSize);
+    });
+
+    readerToggle.addEventListener('click', () => {
+        ttsActive = !ttsActive;
+        localStorage.setItem('ttsActive', ttsActive);
+        
+        if (ttsActive) {
+            readerToggle.textContent = 'Lector 🔇';
+            speakText("Lector de pantalla activado.");
+            setupTTSListeners(); // Aplicar listeners al activar
+        } else {
+            readerToggle.textContent = 'Lector 🔊';
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            // Los listeners de focus/blur permanecen, pero la función speakText saldrá inmediatamente
+            // si ttsActive es false.
+        }
+    });
+
+    // --- Lógica Específica para la página de Acceso Adaptado (login.html) ---
+    const loginButton = document.getElementById('login-button');
+    if (loginButton) {
+        loginButton.addEventListener('click', accessWithProfile);
     }
-    if (localStorage.getItem('accessibility-reader') === 'enabled') {
-        isReaderActive = true;
-        body.classList.add('reader-mode');
-    }
-});
+    
+    // Función mejorada para evitar el bloqueo de alert()
+    function accessWithProfile() {
+        // En un entorno real, aquí se enviarían las credenciales y el perfil al servidor.
+        const profile = "Usuario con Adaptaciones Visuales"; // Perfil de ejemplo
+        
+        // Simulación de retroalimentación no bloqueante y redirección
+        const message = `Acceso exitoso. Redirigiendo al dashboard adaptado para ${profile}.`;
+        
+        // Creamos un mensaje temporal visible
+        const loginForm = document.querySelector('.profile-selector');
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.classList.add('login-feedback');
+        feedbackDiv.textContent = message;
+        
+        if (loginForm) {
+            loginForm.parentNode.insertBefore(feedbackDiv, loginForm.nextSibling);
+            speakText(message); // Narrar el mensaje
+        }
 
-
-// === 3. Lógica de Acceso Adaptado (Usada en pages/login.html) ===
-function accessWithProfile(profileType) {
-    localStorage.clear(); 
-
-    let message = "";
-    switch (profileType) {
-        case 'visual':
-            localStorage.setItem('accessibility-contrast', 'enabled');
-            localStorage.setItem('accessibility-reader', 'enabled');
-            localStorage.setItem('accessibility-font-size', '20'); 
-            message = "Experiencia visual optimizada cargada: Alto Contraste y Lector activados. Redirigiendo a tu Dashboard.";
-            break;
-        case 'auditiva':
-            localStorage.setItem('accessibility-subtitles', 'enabled');
-            message = "Experiencia auditiva optimizada cargada: Subtítulos activos por defecto. Redirigiendo a tu Dashboard.";
-            break;
-        case 'motriz':
-            localStorage.setItem('accessibility-focus-size', 'large'); 
-            message = "Experiencia motriz optimizada cargada: Navegación por teclado y comandos de voz mejorada. Redirigiendo a tu Dashboard.";
-            break;
-        case 'cognitiva':
-            localStorage.setItem('accessibility-reader', 'enabled');
-            message = "Experiencia cognitiva optimizada cargada: Interfaz simplificada y narración activa. Redirigiendo a tu Dashboard.";
-            break;
-        default:
-            message = "Perfil estándar cargado. Redirigiendo a tu Dashboard.";
+        // Redirigir después de un breve retraso
+        setTimeout(() => {
+            window.location.href = '../pages/dashboard.html';
+        }, 1500); // 1.5 segundos para leer el mensaje
     }
 
-    alert(message);
-    window.location.href = `../pages/dashboard.html?profile=${profileType}`;
-}
+    // Cargar el estado al iniciar
+    loadAccessibilityState();
+
+})();
