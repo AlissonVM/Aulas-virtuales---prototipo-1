@@ -1,5 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
+ * El código está envuelto en una IIFE para evitar la contaminación del scope global.
  */
 (function() {
     const root = document.documentElement;
@@ -7,13 +8,56 @@
     const contrastToggle = document.getElementById('contrast-toggle');
     const fontToggle = document.getElementById('font-toggle');
     const readerToggle = document.getElementById('reader-toggle');
-    const widget = document.getElementById('accessibility-widget');
     
-    // Configuración Inicial
-    let currentFontSize = 100; // Porcentaje de tamaño de fuente
-    let ttsActive = false; // Estado del Text-to-Speech
+    // Configuración Inicial y Persistencia
+    let currentFontSize = 100;
+    let ttsActive = false;
 
-    // --- 1. Persistencia de Opciones ---
+    // --- 1. Funciones Centrales de Accesibilidad ---
+
+    function speakText(text) {
+        if (!ttsActive) return;
+        
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = 'es-ES'; 
+        window.speechSynthesis.speak(speech);
+    }
+
+    // Aplicar los escuchadores de foco para la narración
+    function setupTTSListeners() {
+        // Seleccionar todos los elementos interactivos que queremos narrar
+        const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
+
+        interactives.forEach(element => {
+            // El evento 'focus' es crucial para la accesibilidad por teclado
+            element.addEventListener('focus', function() {
+                // Usar el aria-label o aria-describedby si existen, sino, usar el texto
+                let textToSpeak = element.getAttribute('aria-label') || element.textContent;
+                
+                // Si el elemento tiene un aria-describedby, busca ese elemento para narrar su contenido también
+                const describedById = element.getAttribute('aria-describedby');
+                if (describedById) {
+                    const describedByElement = document.getElementById(describedById);
+                    if (describedByElement) {
+                        textToSpeak += `. Información adicional: ${describedByElement.textContent}`;
+                    }
+                }
+
+                speakText(textToSpeak.trim());
+            });
+            // Detener la narración al salir del foco
+            element.addEventListener('blur', function() {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                }
+            });
+        });
+    }
+
     function loadAccessibilityState() {
         const savedContrast = localStorage.getItem('contrastMode');
         const savedFont = localStorage.getItem('fontSize');
@@ -34,43 +78,29 @@
             // Aplicar escuchadores de TTS solo si está activo
             setupTTSListeners();
         }
-    }
-
-    // --- 2. Funciones de Navegación/Lógica ---
-    function speakText(text) {
-        if (!ttsActive) return;
         
-        // Detener la narración anterior si existe
-        if (window.speechSynthesis.speaking) {
-            window.speechSynthesis.cancel();
+        // --- Lógica de Bienvenida en Dashboard ---
+        const welcomeMessage = document.getElementById('welcome-message');
+        const userProfile = localStorage.getItem('userProfile');
+        const showWelcome = localStorage.getItem('showWelcome');
+
+        if (welcomeMessage && userProfile && showWelcome === 'true') {
+            const message = `¡Bienvenido, ${userProfile}! Tu sesión está adaptada.`;
+            welcomeMessage.textContent = message;
+            welcomeMessage.classList.add('active'); // Muestra el mensaje con estilo CSS
+            speakText(message);
+            
+            // Limpiar las banderas para que el mensaje no aparezca en recargas
+            localStorage.removeItem('showWelcome');
+            localStorage.removeItem('userProfile');
+            
+            // Ocultar el mensaje después de un tiempo
+            setTimeout(() => welcomeMessage.classList.remove('active'), 4000);
         }
-
-        const speech = new SpeechSynthesisUtterance(text);
-        speech.lang = 'es-ES'; 
-        window.speechSynthesis.speak(speech);
     }
 
-    function setupTTSListeners() {
-        // Seleccionar todos los elementos interactivos que queremos narrar
-        const interactives = document.querySelectorAll('a, button, [role="button"], input[type="submit"]');
 
-        interactives.forEach(element => {
-            // El evento 'focus' es crucial para la accesibilidad por teclado
-            element.addEventListener('focus', function() {
-                // Usar el aria-label si existe, sino, usar el texto
-                const textToSpeak = element.getAttribute('aria-label') || element.textContent;
-                speakText(textToSpeak.trim());
-            });
-            // El evento 'blur' es para detener la narración al salir del elemento
-            element.addEventListener('blur', function() {
-                if (window.speechSynthesis.speaking) {
-                    window.speechSynthesis.cancel();
-                }
-            });
-        });
-    }
-
-    // --- 3. Escuchadores de Eventos del Widget ---
+    // --- 2. Escuchadores de Eventos del Widget ---
 
     contrastToggle.addEventListener('click', () => {
         body.classList.toggle('high-contrast');
@@ -91,51 +121,48 @@
     readerToggle.addEventListener('click', () => {
         ttsActive = !ttsActive;
         localStorage.setItem('ttsActive', ttsActive);
-        
+        body.classList.toggle('reader-active', ttsActive); // Activa la clase para CSS (pictogramas)
+
         if (ttsActive) {
             readerToggle.textContent = 'Lector 🔇';
             speakText("Lector de pantalla activado.");
-            setupTTSListeners(); // Aplicar listeners al activar
+            setupTTSListeners();
         } else {
             readerToggle.textContent = 'Lector 🔊';
             if (window.speechSynthesis.speaking) {
                 window.speechSynthesis.cancel();
             }
-            // Los listeners de focus/blur permanecen, pero la función speakText saldrá inmediatamente
-            // si ttsActive es false.
         }
     });
 
-    // --- Lógica Específica para la página de Acceso Adaptado (login.html) ---
-    const loginButton = document.getElementById('login-button');
-    if (loginButton) {
-        loginButton.addEventListener('click', accessWithProfile);
-    }
-    
-    // Función mejorada para evitar el bloqueo de alert()
-    function accessWithProfile() {
-        // En un entorno real, aquí se enviarían las credenciales y el perfil al servidor.
-        const profile = "Usuario con Adaptaciones Visuales"; // Perfil de ejemplo
-        
-        // Simulación de retroalimentación no bloqueante y redirección
-        const message = `Acceso exitoso. Redirigiendo al dashboard adaptado para ${profile}.`;
-        
-        // Creamos un mensaje temporal visible
-        const loginForm = document.querySelector('.profile-selector');
-        const feedbackDiv = document.createElement('div');
-        feedbackDiv.classList.add('login-feedback');
-        feedbackDiv.textContent = message;
-        
-        if (loginForm) {
-            loginForm.parentNode.insertBefore(feedbackDiv, loginForm.nextSibling);
-            speakText(message); // Narrar el mensaje
-        }
+    // --- 3. Lógica Específica para la página de Acceso Adaptado (login.html) ---
+    const profileButtons = document.querySelectorAll('.profile-selector button');
 
-        // Redirigir después de un breve retraso
-        setTimeout(() => {
-            window.location.href = '../pages/dashboard.html';
-        }, 1500); // 1.5 segundos para leer el mensaje
-    }
+    profileButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const profile = event.currentTarget.getAttribute('data-profile');
+
+            // Guardar el perfil en localStorage y establecer la bandera de bienvenida
+            localStorage.setItem('userProfile', profile);
+            localStorage.setItem('showWelcome', 'true');
+            
+            const message = `Acceso exitoso. Redirigiendo al dashboard adaptado para ${profile}.`;
+            
+            // Mostrar mensaje de feedback in-page (no bloqueante)
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.classList.add('login-feedback-message');
+            feedbackDiv.textContent = message;
+            
+            event.currentTarget.closest('.profile-selector').appendChild(feedbackDiv);
+            speakText(message);
+
+            // Redirigir
+            setTimeout(() => {
+                window.location.href = '../pages/dashboard.html';
+            }, 1500); 
+        });
+    });
+
 
     // Cargar el estado al iniciar
     loadAccessibilityState();
