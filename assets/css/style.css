@@ -12,11 +12,6 @@
     --max-width: 1200px;
 }
 
-/* Para poder usar colores RGB en el JS y CSS */
-.video-placeholder {
-    --primary-color-rgb: 93, 61, 143; /* RGB de #5d3d8f */
-}
-
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     line-height: 1.7; 
@@ -219,55 +214,19 @@ main {
     font-size: 1.8em;
     margin-bottom: 15px;
 }
-.video-placeholder {
-    width: 100%;
-    height: 350px;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #666;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+.video-container {
+    /* Define el área donde se mostrará el video */
     position: relative;
-    overflow: hidden;
-    border: 1px solid #ccc;
-}
-.video-placeholder::before {
-    content: "▶️";
-    font-size: 3em;
-    position: absolute;
-    color: rgba(0,0,0,0.3);
-}
-.video-placeholder .subtitle-overlay,
-.video-placeholder .sign-language-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px;
-    font-size: 0.9em;
-    text-align: center;
-    box-sizing: border-box;
-    transition: all 0.3s; 
+    height: 400px; 
+    overflow: hidden;
+    border-radius: 8px;
 }
-.video-placeholder .sign-language-overlay {
-    width: 25%;
-    height: 35%;
-    right: 0;
-    left: auto;
-    bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7em;
-    background-color: rgba(var(--primary-color-rgb), 0.8);
-    border: 2px solid var(--secondary-color);
+.video-container iframe {
+    /* Asegura que el reproductor ocupe todo el contenedor */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Footer */
@@ -312,12 +271,7 @@ footer {
         font-size: 1.1em;
         padding: 20px;
     }
-    .video-placeholder {
+    .video-container {
         height: 250px;
-    }
-    .video-placeholder .sign-language-overlay {
-        width: 40%;
-        height: 40%;
-        font-size: 0.6em;
     }
 }
