@@ -2,9 +2,9 @@
 /* Variables y Reset Base */
 /* ======================== */
 :root {
-    --primary-color: #5d3d8f;   /* Morado del logo */
-    --secondary-color: #00b8a9; /* Turquesa del logo */
-    --accent-color: #ff9f1c;    /* Color de acento para botones, focos */
+    --primary-color: #5d3d8f;   /* Morado del logo (Base) */
+    --secondary-color: #00b8a9; /* Turquesa (Acento) */
+    --accent-color: #ff9f1c;    /* Naranja (CTA/Foco) */
     --text-color: #333;
     --bg-color: #f8f9fa;
     --light-bg-color: #ffffff;
@@ -12,7 +12,7 @@
     --max-width: 1200px;
     --border-radius-base: 8px; 
     --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); 
-    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12); /* Nueva sombra más profunda */
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12); 
 }
 
 body {
@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.8em;
     font-weight: 700;
 }
+h1 { font-size: 2.8em; } /* Fuente más grande para el Hero */
 h2 { font-size: 2.2em; }
 h3 { font-size: 1.6em; }
 ul {
@@ -45,7 +46,6 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     outline-offset: 3px;
     border-radius: 5px;
 }
-/* Clase para ocultar contenido a lectores de pantalla (Screen Reader Only) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -57,8 +57,7 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     white-space: nowrap;
     border-width: 0;
 }
-
-/* Widget de Accesibilidad */
+/* Widget de Accesibilidad (Mismo) */
 #accessibility-widget {
     position: fixed;
     top: 50%;
@@ -130,7 +129,7 @@ main {
 }
 .hero-section {
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px; /* Más padding para impacto */
     margin-bottom: 50px;
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-base);
@@ -138,7 +137,14 @@ main {
 
 /* Estilos de Hero Específicos */
 .hero-home {
-    background: linear-gradient(135deg, #e9f5ff, #f0faff);
+    /* Fondo más vivo y moderno */
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); 
+}
+.hero-subtitle {
+    font-size: 1.25em;
+    color: #4a4a4a;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
 }
 .hero-dashboard {
     background: linear-gradient(135deg, #d4f2f7, #d4edf5);
@@ -149,6 +155,10 @@ main {
 .hero-login {
     background: linear-gradient(135deg, #fff3e0, #ffe7cc);
 }
+.hero-forum {
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+}
+
 
 .access-buttons {
     display: flex;
@@ -175,13 +185,20 @@ main {
 }
 /* Clases de apoyo para botones */
 .button-accent { background-color: var(--accent-color); }
-.button-secondary { background-color: #6c757d; }
+.button-secondary { background-color: var(--primary-color); } /* Usar Primary como secundario */
 .button-accent:hover { background-color: #e08b1a; }
-.button-secondary:hover { background-color: #5a6268; }
+.button-secondary:hover { background-color: #48316e; }
 
 /* Grid de Enlaces/Features */
 .section-container {
     padding: 0 20px;
+}
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
 .link-grid {
     display: grid;
@@ -194,30 +211,39 @@ main {
     display: block;
     padding: 30px;
     background: var(--light-bg-color);
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
+    border-top: 5px solid var(--secondary-color); /* Toque de diseño moderno */
     border-radius: 12px;
     text-decoration: none;
     color: var(--primary-color);
     font-weight: 700;
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     font-size: 1.1em;
 }
 .card-link:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    border-color: var(--secondary-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
 }
-.card-link.special-link {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
+.card-link h3 {
+    color: var(--primary-color);
+    margin-top: 0;
 }
-.card-link.special-link:hover {
-    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+.card-link p {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 0.9em;
+}
+.access-grid-small {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     margin-bottom: 50px;
 }
 
-/* Estilos de Login Alumno (Acceso Adaptado) */
+/* Estilos de Login y Dashboard (Mismos) */
 .profile-selector {
     position: relative;
     display: flex;
@@ -253,7 +279,6 @@ main {
 .profile-selector button:hover span {
     color: #e0e0e0;
 }
-/* Mensaje de feedback de inicio de sesión */
 .login-feedback-message {
     position: absolute;
     bottom: -50px;
@@ -276,7 +301,7 @@ main {
     100% { opacity: 0; transform: translateY(-10px); }
 }
 
-/* Estilos de Login Docente (Formulario simple) */
+/* Estilos de Login Docente/Clásico (Formulario simple) */
 .simple-login-form {
     max-width: 400px;
     margin: 40px auto;
@@ -288,25 +313,22 @@ main {
     flex-direction: column;
     gap: 15px;
 }
-
 .simple-login-form label {
     font-weight: bold;
     color: var(--primary-color);
     margin-top: 5px;
 }
-
 .simple-login-form input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
 }
-
-.simple-login-form .login-button {
+.login-link-adaptado {
     text-align: center;
+    font-size: 0.9em;
     margin-top: 10px;
 }
-
 
 /* Estilos de Dashboard */
 .welcome-banner {
@@ -382,7 +404,7 @@ main {
     cursor: not-allowed;
 }
 
-/* Estilos para las Aulas (classes/class-module-x.html) */
+/* Estilos de Aulas (Mismo) */
 .learning-resource {
     background: var(--light-bg-color);
     padding: 30px;
@@ -395,18 +417,15 @@ main {
     font-size: 1.8em;
     margin-bottom: 15px;
 }
-
-/* Contenedor de video HORIZONTAL (16:9 - Estándar) */
 .video-container-horizontal {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 * 100) */
+    padding-top: 56.25%; 
     overflow: hidden;
     border-radius: var(--border-radius-base);
     margin: 0 auto 20px auto; 
     max-width: 900px; 
 }
-
 .video-container-horizontal iframe {
     position: absolute;
     top: 0;
@@ -420,7 +439,6 @@ main {
     font-style: italic;
     color: #555;
 }
-/* Estilos de la Transcripción */
 .transcript-section {
     margin-top: 30px;
     padding-top: 15px;
@@ -442,16 +460,100 @@ main {
 
 
 /* ======================== */
-/* ESTILOS ESPECÍFICOS DE FOROS/ESTÁNDARES (forums.html) */
+/* ESTILOS DE FORO (forums.html) */
+/* ======================== */
+.forum-container {
+    padding: 20px;
+    background: var(--light-bg-color);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
+}
+.forum-thread-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* Para simular separadores */
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-base);
+    overflow: hidden;
+    margin-top: 20px;
+}
+.forum-thread-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+.forum-thread-card:last-child {
+    border-bottom: none;
+}
+.forum-thread-card:hover {
+    background: #f5f5f5;
+}
+.forum-thread-card.inactive {
+    opacity: 0.7;
+}
+.thread-info {
+    flex-grow: 1;
+}
+.thread-info h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.thread-info h4 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+.thread-info h4 a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+.thread-meta {
+    font-size: 0.85em;
+    color: #777;
+}
+.thread-stats {
+    display: flex;
+    gap: 25px;
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.thread-stats .stat-count {
+    color: var(--accent-color);
+}
+.forum-pagination {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.forum-pagination .button-primary {
+    padding: 10px 15px;
+    font-size: 0.9em;
+}
+
+/* ======================== */
+/* ESTILOS DE ESTÁNDARES (docs/standards.html) */
 /* ======================== */
 .standard-hub {
     margin-top: 30px;
 }
-
+.subsection-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--secondary-color);
+    padding-left: 10px;
+}
 /* Pestañas (Tabs) */
 .tabs-container {
     display: flex;
-    border-bottom: 2px solid #e0e0e0; /* Línea de base más clara */
+    border-bottom: 2px solid #e0e0e0; 
     margin-bottom: 20px;
     overflow-x: auto;
 }
@@ -461,7 +563,7 @@ main {
     padding: 15px 25px;
     font-size: 1.1em;
     font-weight: 600;
-    color: #666; /* Color de texto suave */
+    color: #666; 
     cursor: pointer;
     transition: color 0.3s, border-bottom 0.3s;
     border-bottom: 3px solid transparent;
@@ -474,7 +576,6 @@ main {
     color: var(--secondary-color);
     border-bottom-color: var(--secondary-color);
 }
-
 /* Contenido de Pestañas y Tarjetas */
 .tab-panel {
     padding: 20px 0;
@@ -489,20 +590,18 @@ main {
     padding: 25px;
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-base);
-    border-left: 5px solid; /* Usado para los colores de énfasis de ISO */
+    border-left: 5px solid; 
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .standard-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
-/* Colores de énfasis por ISO para darle vida */
+/* Colores de énfasis por ISO */
 .iso-card-9001 { border-left-color: #3498db; }    /* Azul - Calidad */
 .iso-card-14001 { border-left-color: #2ecc71; }  /* Verde - Ambiental */
 .iso-card-45001 { border-left-color: #e74c3c; }  /* Rojo - Seguridad */
 .iso-card-26000 { border-left-color: #9b59b6; }  /* Púrpura - RS */
-
-
 .standard-card h4 {
     color: var(--primary-color);
     margin-top: 0;
@@ -512,15 +611,9 @@ main {
     color: var(--secondary-color);
     font-weight: 700;
 }
-
 /* ODS List (Diseño de tarjetas separadas) */
 .ods-list {
     padding: 0 10px;
-}
-.ods-list h3 {
-    color: var(--secondary-color);
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
 }
 .ods-item {
     padding: 20px;
@@ -528,9 +621,8 @@ main {
     border-radius: 8px;
     margin-bottom: 15px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--secondary-color);
 }
-
 .ods-number {
     font-weight: 700;
     color: var(--primary-color);
@@ -573,8 +665,8 @@ footer {
     .hero-section {
         padding: 60px 15px;
     }
-    .hero-section h2 {
-        font-size: 2.2em;
+    .hero-section h1 {
+        font-size: 2em;
     }
     .button-primary {
         width: 100%;
@@ -595,5 +687,17 @@ footer {
     }
     .tabs-container {
         flex-wrap: nowrap;
+    }
+    .access-grid-small {
+        flex-direction: column;
+    }
+    .forum-thread-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .thread-stats {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 10px;
     }
 }
