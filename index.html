@@ -23,9 +23,10 @@
             <ul>
                 <li><a href="index.html" aria-current="page">Inicio</a></li>
                 <li><a href="docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
-                <li><a href="pages/login-student-classic.html">Mi Dashboard Alumno</a></li> 
-                <li><a href="pages/login.html">Acceso Adaptado</a></li>
+                <li id="nav-dashboard-link"><a href="pages/login-student-classic.html">Mi Dashboard Alumno</a></li> 
+                <li id="nav-login-link"><a href="pages/login.html">Acceso Adaptado</a></li>
                 <li><a href="pages/forums.html">Foro de Discusión</a></li> 
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -61,8 +62,8 @@
         <section class="section-container" aria-labelledby="quick-access-heading">
             <h2 id="quick-access-heading" class="section-heading">Acceso Rápido</h2>
             <div class="access-grid-small">
-                 <a href="pages/login-student-classic.html" class="button-primary" role="button">Acceso Alumnos (Clásico)</a>
-                 <a href="pages/login-teacher.html" class="button-primary button-accent" role="button">Acceso Docentes (Capacitación)</a>
+                 <a href="pages/login-student-classic.html" class="button-primary" role="button">Acceso Alumnos</a> 
+                 <a href="pages/login-teacher.html" class="button-primary button-accent" role="button">Acceso Docentes</a> 
                  <a href="pages/forums.html" class="button-primary button-secondary" role="button">Explorar el Foro</a>
             </div>
         </section>
