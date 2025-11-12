@@ -1,6 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
- * El código está envuelto en una IIFE para evitar la contaminación del scope global.
+ * Incluye correcciones de redirección, simulación de accesibilidad inicial, y TTS.
  */
 (function() {
     const root = document.documentElement;
@@ -29,16 +29,12 @@
 
     // Aplicar los escuchadores de foco para la narración
     function setupTTSListeners() {
-        // Seleccionar todos los elementos interactivos que queremos narrar
         const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
 
         interactives.forEach(element => {
-            // El evento 'focus' es crucial para la accesibilidad por teclado
             element.addEventListener('focus', function() {
-                // Usar el aria-label o aria-describedby si existen, sino, usar el texto
                 let textToSpeak = element.getAttribute('aria-label') || element.textContent;
                 
-                // Si el elemento tiene un aria-describedby, busca ese elemento para narrar su contenido también
                 const describedById = element.getAttribute('aria-describedby');
                 if (describedById) {
                     const describedByElement = document.getElementById(describedById);
@@ -49,7 +45,6 @@
 
                 speakText(textToSpeak.trim());
             });
-            // Detener la narración al salir del foco
             element.addEventListener('blur', function() {
                 if (window.speechSynthesis.speaking) {
                     window.speechSynthesis.cancel();
@@ -75,11 +70,22 @@
         if (savedTTS === 'true') {
             ttsActive = true;
             readerToggle.textContent = 'Lector 🔇';
-            // Aplicar escuchadores de TTS solo si está activo
             setupTTSListeners();
         }
         
-        // --- Lógica de Bienvenida en Dashboard ---
+        // --- LÓGICA: Simulación de Adaptación Inicial para Discapacidad Visual en login.html ---
+        if (window.location.pathname.includes('login.html')) {
+            // Forzar Alto Contraste y fuente grande para simular la adaptación inicial (Visual)
+            body.classList.add('high-contrast');
+            root.style.fontSize = '120%'; 
+            
+            // Narración inicial para el usuario
+            setTimeout(() => {
+                speakText("Bienvenido al acceso adaptado. Seleccione su perfil para personalizar su experiencia.");
+            }, 1000);
+        }
+        
+        // --- Lógica de Bienvenida en Dashboard Alumno ---
         const welcomeMessage = document.getElementById('welcome-message');
         const userProfile = localStorage.getItem('userProfile');
         const showWelcome = localStorage.getItem('showWelcome');
@@ -87,12 +93,11 @@
         if (welcomeMessage && userProfile && showWelcome === 'true') {
             const message = `¡Bienvenido, ${userProfile}! Tu sesión está adaptada.`;
             welcomeMessage.textContent = message;
-            welcomeMessage.classList.add('active'); // Muestra el mensaje con estilo CSS
+            welcomeMessage.classList.add('active'); 
             speakText(message);
             
-            // Limpiar las banderas para que el mensaje no aparezca en recargas
+            // Limpiar la bandera para que el mensaje no aparezca en recargas
             localStorage.removeItem('showWelcome');
-            localStorage.removeItem('userProfile');
             
             // Ocultar el mensaje después de un tiempo
             setTimeout(() => welcomeMessage.classList.remove('active'), 4000);
@@ -101,7 +106,7 @@
 
 
     // --- 2. Escuchadores de Eventos del Widget ---
-
+    
     contrastToggle.addEventListener('click', () => {
         body.classList.toggle('high-contrast');
         const isContrastActive = body.classList.contains('high-contrast');
@@ -121,7 +126,7 @@
     readerToggle.addEventListener('click', () => {
         ttsActive = !ttsActive;
         localStorage.setItem('ttsActive', ttsActive);
-        body.classList.toggle('reader-active', ttsActive); // Activa la clase para CSS (pictogramas)
+        body.classList.toggle('reader-active', ttsActive);
 
         if (ttsActive) {
             readerToggle.textContent = 'Lector 🔇';
@@ -142,27 +147,40 @@
         button.addEventListener('click', (event) => {
             const profile = event.currentTarget.getAttribute('data-profile');
 
-            // Guardar el perfil en localStorage y establecer la bandera de bienvenida
+            // Guardar el perfil y establecer la bandera de bienvenida
             localStorage.setItem('userProfile', profile);
             localStorage.setItem('showWelcome', 'true');
             
             const message = `Acceso exitoso. Redirigiendo al dashboard adaptado para ${profile}.`;
             
-            // Mostrar mensaje de feedback in-page (no bloqueante)
-            const feedbackDiv = document.createElement('div');
-            feedbackDiv.classList.add('login-feedback-message');
+            // Mostrar mensaje de feedback in-page
+            let feedbackDiv = document.querySelector('.login-feedback-message');
+            if (!feedbackDiv) {
+                feedbackDiv = document.createElement('div');
+                feedbackDiv.classList.add('login-feedback-message');
+                event.currentTarget.closest('.profile-selector').appendChild(feedbackDiv);
+            }
             feedbackDiv.textContent = message;
             
-            event.currentTarget.closest('.profile-selector').appendChild(feedbackDiv);
             speakText(message);
 
-            // Redirigir
+            // Redirigir (Corregido)
             setTimeout(() => {
                 window.location.href = '../pages/dashboard.html';
             }, 1500); 
         });
     });
 
+    // Lógica simple para login de docentes (simulación por formulario)
+    const teacherLoginForm = document.querySelector('.simple-login-form');
+    if (teacherLoginForm) {
+        teacherLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulación de login exitoso
+            // Opcional: mostrar un mensaje de carga/éxito aquí
+            window.location.href = '../pages/dashboard-teacher.html';
+        });
+    }
 
     // Cargar el estado al iniciar
     loadAccessibilityState();
