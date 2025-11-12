@@ -1,6 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
- * Incluye correcciones de redirección, simulación de accesibilidad inicial, y TTS.
+ * Controla la activación condicional de la accesibilidad y la redirección.
  */
 (function() {
     const root = document.documentElement;
@@ -16,7 +16,7 @@
     // --- 1. Funciones Centrales de Accesibilidad ---
 
     function speakText(text) {
-        if (!ttsActive) return;
+        if (!ttsActive || !window.speechSynthesis) return;
         
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
@@ -27,8 +27,8 @@
         window.speechSynthesis.speak(speech);
     }
 
-    // Aplicar los escuchadores de foco para la narración
     function setupTTSListeners() {
+        // ... (misma lógica de TTS) ...
         const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
 
         interactives.forEach(element => {
@@ -57,7 +57,8 @@
         const savedContrast = localStorage.getItem('contrastMode');
         const savedFont = localStorage.getItem('fontSize');
         const savedTTS = localStorage.getItem('ttsActive');
-
+        
+        // Cargar estado persistente (global, no de la simulación inicial)
         if (savedContrast === 'active') {
             body.classList.add('high-contrast');
         }
@@ -69,23 +70,13 @@
 
         if (savedTTS === 'true') {
             ttsActive = true;
-            readerToggle.textContent = 'Lector 🔇';
+            if (readerToggle) readerToggle.textContent = 'Lector 🔇';
             setupTTSListeners();
         }
         
-        // --- LÓGICA: Simulación de Adaptación Inicial para Discapacidad Visual en login.html ---
-        if (window.location.pathname.includes('login.html')) {
-            // Forzar Alto Contraste y fuente grande para simular la adaptación inicial (Visual)
-            body.classList.add('high-contrast');
-            root.style.fontSize = '120%'; 
-            
-            // Narración inicial para el usuario
-            setTimeout(() => {
-                speakText("Bienvenido al acceso adaptado. Seleccione su perfil para personalizar su experiencia.");
-            }, 1000);
-        }
+        // **IMPORTANTE: Se remueve la activación automática de Alto Contraste en login.html**
         
-        // --- Lógica de Bienvenida en Dashboard Alumno ---
+        // Lógica de Bienvenida en Dashboard
         const welcomeMessage = document.getElementById('welcome-message');
         const userProfile = localStorage.getItem('userProfile');
         const showWelcome = localStorage.getItem('showWelcome');
@@ -96,49 +87,51 @@
             welcomeMessage.classList.add('active'); 
             speakText(message);
             
-            // Limpiar la bandera para que el mensaje no aparezca en recargas
             localStorage.removeItem('showWelcome');
-            
-            // Ocultar el mensaje después de un tiempo
             setTimeout(() => welcomeMessage.classList.remove('active'), 4000);
         }
     }
 
 
     // --- 2. Escuchadores de Eventos del Widget ---
-    
-    contrastToggle.addEventListener('click', () => {
-        body.classList.toggle('high-contrast');
-        const isContrastActive = body.classList.contains('high-contrast');
-        localStorage.setItem('contrastMode', isContrastActive ? 'active' : 'inactive');
-    });
+    if (contrastToggle) {
+        contrastToggle.addEventListener('click', () => {
+            body.classList.toggle('high-contrast');
+            const isContrastActive = body.classList.contains('high-contrast');
+            localStorage.setItem('contrastMode', isContrastActive ? 'active' : 'inactive');
+        });
+    }
 
-    fontToggle.addEventListener('click', () => {
-        if (currentFontSize === 150) {
-            currentFontSize = 100;
-        } else {
-            currentFontSize += 10;
-        }
-        root.style.fontSize = currentFontSize + '%';
-        localStorage.setItem('fontSize', currentFontSize);
-    });
-
-    readerToggle.addEventListener('click', () => {
-        ttsActive = !ttsActive;
-        localStorage.setItem('ttsActive', ttsActive);
-        body.classList.toggle('reader-active', ttsActive);
-
-        if (ttsActive) {
-            readerToggle.textContent = 'Lector 🔇';
-            speakText("Lector de pantalla activado.");
-            setupTTSListeners();
-        } else {
-            readerToggle.textContent = 'Lector 🔊';
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
+    if (fontToggle) {
+        fontToggle.addEventListener('click', () => {
+            if (currentFontSize === 150) {
+                currentFontSize = 100;
+            } else {
+                currentFontSize += 10;
             }
-        }
-    });
+            root.style.fontSize = currentFontSize + '%';
+            localStorage.setItem('fontSize', currentFontSize);
+        });
+    }
+    
+    if (readerToggle) {
+        readerToggle.addEventListener('click', () => {
+            ttsActive = !ttsActive;
+            localStorage.setItem('ttsActive', ttsActive);
+            body.classList.toggle('reader-active', ttsActive);
+
+            if (ttsActive) {
+                readerToggle.textContent = 'Lector 🔇';
+                speakText("Lector de pantalla activado.");
+                setupTTSListeners();
+            } else {
+                readerToggle.textContent = 'Lector 🔊';
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                }
+            }
+        });
+    }
 
     // --- 3. Lógica Específica para la página de Acceso Adaptado (login.html) ---
     const profileButtons = document.querySelectorAll('.profile-selector button');
@@ -146,6 +139,27 @@
     profileButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const profile = event.currentTarget.getAttribute('data-profile');
+            
+            // **LÓGICA DE SIMULACIÓN DE ACCESO ADAPTADO (Tu solicitud)**
+            if (profile === "Estudiante con Discapacidad Visual") {
+                // Activa la simulación de baja visión/ceguera
+                body.classList.add('high-contrast');
+                root.style.fontSize = '120%'; 
+                ttsActive = true;
+                localStorage.setItem('contrastMode', 'active');
+                localStorage.setItem('fontSize', 120);
+                localStorage.setItem('ttsActive', 'true');
+                setupTTSListeners(); // Habilita el lector antes de la redirección
+            } else {
+                 // Para otros perfiles (Cognitivo/Motor), se desactivan forzadamente los overrides visuales
+                localStorage.setItem('contrastMode', 'inactive');
+                localStorage.setItem('fontSize', 100);
+                localStorage.setItem('ttsActive', 'false');
+                root.style.fontSize = '100%'; 
+                body.classList.remove('high-contrast');
+                ttsActive = false;
+            }
+
 
             // Guardar el perfil y establecer la bandera de bienvenida
             localStorage.setItem('userProfile', profile);
@@ -164,7 +178,7 @@
             
             speakText(message);
 
-            // Redirigir (Corregido)
+            // Redirigir
             setTimeout(() => {
                 window.location.href = '../pages/dashboard.html';
             }, 1500); 
@@ -176,8 +190,6 @@
     if (teacherLoginForm) {
         teacherLoginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulación de login exitoso
-            // Opcional: mostrar un mensaje de carga/éxito aquí
             window.location.href = '../pages/dashboard-teacher.html';
         });
     }
