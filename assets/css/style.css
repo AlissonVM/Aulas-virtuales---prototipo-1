@@ -38,12 +38,12 @@ ul {
 /* ======================== */
 /* Accesibilidad por Defecto (WCAG) */
 /* ======================== */
-a:focus, button:focus, .card-link:focus {
+a:focus, button:focus, .card-link:focus, input:focus {
     outline: 4px solid var(--accent-color); /* Foco vibrante */
     outline-offset: 3px;
     border-radius: 5px;
 }
-/* Clase para ocultar contenido a lectores de pantalla, pero visible si es necesario para el foco */
+/* Clase para ocultar contenido a lectores de pantalla (Screen Reader Only) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -148,6 +148,13 @@ main {
     background: linear-gradient(135deg, #fff3e0, #ffe7cc);
 }
 
+.access-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
 .button-primary {
     background-color: var(--secondary-color);
     color: white;
@@ -208,7 +215,7 @@ main {
     background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
 }
 
-/* Estilos de Login */
+/* Estilos de Login Alumno (Acceso Adaptado) */
 .profile-selector {
     position: relative;
     display: flex;
@@ -259,6 +266,45 @@ main {
     transform: translateY(10px);
     animation: fadeInOut 2s forwards;
 }
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    30% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Estilos de Login Docente (Formulario simple) */
+.simple-login-form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--light-bg-color);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-base);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.simple-login-form label {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 5px;
+}
+
+.simple-login-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.simple-login-form .login-button {
+    text-align: center;
+    margin-top: 10px;
+}
+
 
 /* Estilos de Dashboard */
 .welcome-banner {
@@ -334,7 +380,7 @@ main {
     cursor: not-allowed;
 }
 
-/* Estilos para las Aulas (classes/class-module-1.html) */
+/* Estilos para las Aulas (classes/class-module-x.html) */
 .learning-resource {
     background: var(--light-bg-color);
     padding: 30px;
@@ -347,16 +393,21 @@ main {
     font-size: 1.8em;
     margin-bottom: 15px;
 }
-.video-container {
+
+/* Contenedor de video HORIZONTAL (16:9 - Estándar) - Aplicado a AMBAS clases */
+.video-container-horizontal {
     /* Implementación de Aspect Ratio 16:9 para videos incrustados */
     position: relative;
     width: 100%;
     padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 * 100) */
     overflow: hidden;
     border-radius: var(--border-radius-base);
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto; 
+    max-width: 900px; 
 }
-.video-container iframe {
+
+.video-container-horizontal iframe {
+    /* Hace que el iframe ocupe el 100% del contenedor con Aspect Ratio */
     position: absolute;
     top: 0;
     left: 0;
@@ -369,6 +420,7 @@ main {
     font-style: italic;
     color: #555;
 }
+/* Estilos de la Transcripción */
 .transcript-section {
     margin-top: 30px;
     padding-top: 15px;
@@ -377,10 +429,10 @@ main {
 .transcript-content {
     max-height: 400px;
     overflow-y: auto;
-    padding-right: 15px; /* Espacio para scrollbar */
+    padding-right: 15px;
 }
 .transcript-content p {
-    font-family: monospace; /* Fuente que facilita la lectura de marcas de tiempo */
+    font-family: monospace; 
     font-size: 0.9em;
     line-height: 1.5;
     border-left: 3px solid var(--secondary-color);
@@ -424,11 +476,17 @@ footer {
         width: 100%;
         box-sizing: border-box;
     }
+    .access-buttons {
+        flex-direction: column;
+    }
     .link-grid, .course-list {
         grid-template-columns: 1fr;
     }
     .profile-selector button {
         font-size: 1.1em;
         padding: 20px;
+    }
+    .simple-login-form {
+        margin: 20px auto;
     }
 }
