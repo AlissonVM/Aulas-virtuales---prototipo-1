@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Docentes | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
+                <li><a href="../pages/dashboard-teacher.html">Mi Dashboard Docente</a></li>
+                <li><a href="../pages/login-teacher.html" aria-current="page">Acceso Docentes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-login" aria-labelledby="login-heading">
+            <h2 id="login-heading">Acceso para Docentes</h2>
+            <p>Accede a tus recursos de capacitación y materiales didácticos.</p>
+        </section>
+
+        <form class="simple-login-form">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" required placeholder="tu.nombre@educatech.edu">
+            
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required placeholder="••••••••">
+            
+            <a href="dashboard-teacher.html" class="button-primary login-button">Iniciar Sesión</a>
+        </form>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
