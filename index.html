@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EducaTech Inclusiva</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Inicio | EducaTech Inclusiva: Educación sin Barreras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/accessibility.css"> 
 </head>
@@ -22,50 +22,54 @@
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
                 <li><a href="index.html" aria-current="page">Inicio</a></li>
-                <li><a href="docs/standards.html">Nuestro Compromiso</a></li>
-                <li><a href="pages/dashboard.html">Mi Dashboard Alumno</a></li>
+                <li><a href="docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li><a href="pages/login-student-classic.html">Mi Dashboard Alumno</a></li> 
                 <li><a href="pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="pages/forums.html">Foro de Discusión</a></li> 
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section class="hero-section hero-home">
-            <h1 id="main-heading">Educación sin Barreras</h1>
-            <p>EducaTech Inclusiva es la plataforma líder en cursos en línea, diseñada desde cero bajo estándares WCAG 2.1 y NTC 5854 para garantizar el acceso a todos, sin importar sus capacidades.</p>
-            
+        <section class="hero-section hero-home" aria-labelledby="main-heading">
+            <h1 id="main-heading">Educación sin Barreras: Inclusión y Sostenibilidad Digital.</h1>
+            <p class="hero-subtitle">La única plataforma diseñada desde cero bajo estándares WCAG y alineada con la ISO 14001. Aprendizaje adaptado, responsable y de calidad.</p>
             <div class="access-buttons">
-                <a href="pages/login.html" class="button-primary">Acceso Alumnos</a>
-                <a href="pages/login-teacher.html" class="button-primary button-secondary">Acceso Docentes</a>
+                <a href="pages/login.html" class="button-primary button-accent" role="button">🚀 Inicia Tu Experiencia Adaptada</a>
+                <a href="docs/standards.html" class="button-primary button-secondary" role="button">📚 Ver Estándares y Compromiso</a>
             </div>
         </section>
 
-        <section class="section-container" aria-labelledby="features-heading">
-            <h2 id="features-heading">Nuestras Ventajas de Inclusión</h2>
+        <section class="section-container" aria-labelledby="purpose-heading">
+            <h2 id="purpose-heading" class="section-heading">Nuestro Propósito: Romper las Barreras Digitales</h2>
             <div class="link-grid">
-                <a href="docs/standards.html" class="card-link special-link">
-                    WCAG 2.1 AA Compliance
-                </a>
-                <a href="#" class="card-link">
-                    Audiodescripción en Tiempo Real
-                </a>
-                <a href="#" class="card-link">
-                    Modo Lector Cognitivo
-                </a>
-                <a href="#" class="card-link">
-                    Navegación por Teclado
-                </a>
+                <div class="card-link" role="article" aria-label="Enfoque de Accesibilidad">
+                    <h3>Accesibilidad WCAG</h3>
+                    <p>Diseño enfocado en Baja Visión, Dislexia y Movilidad Reducida. Cada recurso es adaptable.</p>
+                </div>
+                <div class="card-link" role="article" aria-label="Enfoque de Sostenibilidad">
+                    <h3>Compromiso ISO 14001</h3>
+                    <p>Cursos de Economía Circular basados en la gestión ambiental y digitalización responsable.</p>
+                </div>
+                <div class="card-link" role="article" aria-label="Enfoque de Calidad">
+                    <h3>Calidad ISO 9001</h3>
+                    <p>Garantía de rigor académico y mejora continua en todos los módulos ofrecidos.</p>
+                </div>
             </div>
         </section>
         
-        <section class="section-container cta-section" aria-labelledby="cta-heading">
-            <h2 id="cta-heading">¿Listo para empezar tu camino?</h2>
-            <a href="pages/login.html" class="button-primary cta-button">Regístrate Hoy</a>
+        <section class="section-container" aria-labelledby="quick-access-heading">
+            <h2 id="quick-access-heading" class="section-heading">Acceso Rápido</h2>
+            <div class="access-grid-small">
+                 <a href="pages/login-student-classic.html" class="button-primary" role="button">Acceso Alumnos (Clásico)</a>
+                 <a href="pages/login-teacher.html" class="button-primary button-accent" role="button">Acceso Docentes (Capacitación)</a>
+                 <a href="pages/forums.html" class="button-primary button-secondary" role="button">Explorar el Foro</a>
+            </div>
         </section>
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Tecnología para una Educación sin Barreras.</p>
     </footer>
 
     <script src="assets/js/script.js"></script>
