@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compromiso Global | EducaTech Inclusiva</title>
+    <title>Nuestro Compromiso: Estándares ISO y ODS | EducaTech Inclusiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/accessibility.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
 </head>
 <body>
     <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
@@ -22,50 +22,135 @@
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="#" aria-current="page">Nuestro Compromiso</a></li>
-                <li><a href="../pages/dashboard.html">Mi Dashboard</a></li>
+                <li><a href="standards.html" aria-current="page">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li><a href="../pages/login-student-classic.html">Mi Dashboard Alumno</a></li>
                 <li><a href="../pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="../pages/forums.html">Foro de Discusión</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <main role="main">
-        <section class="hero-section" aria-labelledby="standards-title" style="background: linear-gradient(135deg, #f0faff, #e0f2f7);">
-            <h2 id="standards-title">🌍 Nuestro Compromiso: Calidad, Inclusión y Sostenibilidad</h2>
-            <p>El proyecto "Aulas Virtuales Inclusivas" está fundamentado en criterios éticos, tecnológicos y ambientales, garantizando un impacto positivo.</p>
+        <section class="hero-section hero-class" aria-labelledby="commitment-title">
+            <h2 id="commitment-title">Nuestra Estrategia de Responsabilidad Social Empresarial (RSE)</h2>
+            <p>La confiabilidad de EducaTech se basa en el cumplimiento de estándares internacionales que garantizan la calidad, la inclusión y la sostenibilidad.</p>
         </section>
 
-        <div class="link-grid" style="grid-template-columns: 1fr;">
-            <article role="region" aria-labelledby="wcag-title" class="card-link" style="text-align: left; border-left: 5px solid var(--secondary-color);">
-                <h3 id="wcag-title">☑️ Estándares de Accesibilidad Web: WCAG 2.1</h3>
-                <p>Todo el desarrollo de nuestra plataforma cumple con los criterios de las Web Content Accessibility Guidelines (WCAG) 2.1 Nivel AA. Esto asegura que el contenido es Perceptible, Operable, Comprensible y Robusto para cualquier persona.</p>
-                <ul>
-                    <li>Interfaz Adaptable: Personalización de tamaño de letra, contraste y control por voz/teclado.</li>
-                    <li>Contenido Multimedia Accesible: Audiodescripciones, subtítulos sincronizados, y lenguaje de señas digital.</li>
-                </ul>
-            </article>
+        <section class="section-container standard-hub">
+            
+            <div class="tabs-container" role="tablist">
+                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-iso">Normas ISO</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-gri">Estándares GRI</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-ods">ODS (Objetivos ONU)</button>
+            </div>
 
-            <article role="region" aria-labelledby="iso-title" class="card-link" style="text-align: left; border-left: 5px solid var(--primary-color);">
-                <h3 id="iso-title">✅ Certificaciones de Gestión: ISO 9001 y 14001</h3>
-                <p>Nuestra dedicación a la excelencia y la responsabilidad:</p>
-                <ul>
-                    <li>ISO 9001 (Gestión de Calidad): Implementada en el diseño de los Módulos Interactivos de Aprendizaje y el Panel de Análisis y Seguimiento, garantizando un proceso educativo de alta calidad y mejora continua.</li>
-                    <li>ISO 14001 (Gestión Ambiental): Fomentamos el uso responsable de recursos tecnológicos, eliminando el uso de materiales impresos y utilizando servidores de bajo consumo energético para reducir nuestra huella ecológica.</li>
-                </ul>
-            </article>
+            <div id="panel-iso" class="tab-panel active" role="tabpanel" tabindex="0">
+                <h3 class="subsection-title">Pilares de Calidad y Gestión (ISO)</h3>
+                <div class="standard-grid">
+                    <div class="standard-card iso-card-9001">
+                        <h4>ISO 9001: Gestión de Calidad</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Calidad de la Enseñanza.</p>
+                        <p>Aseguramos que todos los servicios cumplan consistentemente con los requisitos de calidad y las expectativas de los usuarios. Nuestro servicio educativo es fiable y accesible.</p>
+                    </div>
+                    <div class="standard-card iso-card-14001">
+                        <h4>ISO 14001: Gestión Ambiental</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Sostenibilidad y Digitalización.</p>
+                        <p>Orientamos nuestra plataforma a reducir el impacto ambiental a través del reemplazo de material impreso por recursos digitales.</p>
+                    </div>
+                    <div class="standard-card iso-card-45001">
+                        <h4>ISO 45001: Seguridad y Salud Digital</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Bienestar del Colaborador.</p>
+                        <p>Garantizamos condiciones seguras en el entorno virtual mediante protocolos de ergonomía digital y prevención de estrés tecnológico.</p>
+                    </div>
+                    <div class="standard-card iso-card-26000">
+                        <h4>ISO 26000: Responsabilidad Social</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Inclusión y Ética.</p>
+                        <p>Establece cómo debemos comportarnos de forma socialmente responsable. Aplicamos la inclusión, la sostenibilidad y la ética en todos nuestros procesos.</p>
+                    </div>
+                </div>
+            </div>
 
-             <article role="region" aria-labelledby="ods-title" class="card-link" style="text-align: left; border-left: 5px solid var(--secondary-color);">
-                <h3 id="ods-title">🎯 Contribución a los Objetivos de Desarrollo Sostenible (ODS)</h3>
-                <p>El proyecto "Aulas Virtuales Inclusivas" de EducaTech contribuye directamente a los siguientes ODS:</p>
-                <p>ODS 4: Educación de Calidad: Garantizando el acceso equitativo, inclusivo y de calidad para estudiantes con discapacidad, fortaleciendo la igualdad de oportunidades y la educación a lo largo de la vida.</p>
-                <p>ODS 10: Reducción de las Desigualdades: Trabajamos activamente para reducir la brecha digital y educativa, promoviendo la inclusión social, económica y política de todas las personas.</p>
-            </article>
-        </div>
+            <div id="panel-gri" class="tab-panel" role="tabpanel" tabindex="0" hidden>
+                <h3 class="subsection-title">Reporte y Transparencia (GRI)</h3>
+                <div class="standard-list">
+                    <div class="ods-item">
+                        <h4>GRI 102: Contenidos Generales</h4>
+                        <p><strong>Compromiso:</strong> Transparencia. Reportamos la participación de personal con discapacidad en nuestros programas.</p>
+                    </div>
+                    <div class="ods-item">
+                        <h4>GRI 300: Estándares Ambientales</h4>
+                        <p><strong>Compromiso:</strong> Sostenibilidad. Reportamos la reducción del consumo de papel y energía, alineados a la digitalización de nuestros materiales.</p>
+                    </div>
+                    <div class="ods-item">
+                        <h4>GRI 400: Estándares Sociales</h4>
+                        <p><strong>Compromiso:</strong> Inclusión. Reportamos el número de docentes capacitados en accesibilidad digital y formación inclusiva.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="panel-ods" class="tab-panel" role="tabpanel" tabindex="0" hidden>
+                <h3 class="subsection-title">Alineación con Metas Globales (ODS)</h3>
+                <div class="ods-list">
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 4:</span> Educación de Calidad 
+                        <p><strong>Relación:</strong> Buscamos garantizar el acceso para todos los estudiantes sin restricción alguna, asegurando la educación inclusiva y equitativa.</p>
+                    </div>
+                    
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 9:</span> Industria, Innovación e Infraestructura
+                        <p><strong>Relación:</strong> Sacamos provecho a las tecnologías para mejorar la educación, invirtiendo en infraestructura tecnológica accesible y sostenible.</p>
+                    </div>
+                    
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 10:</span> Reducción de las Desigualdades
+                        <p><strong>Relación:</strong> Promovemos las oportunidades necesarias para aquellas personas con alguna discapacidad, abordando la desigualdad en el acceso a la educación.</p>
+                    </div>
+
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 17:</span> Alianzas para lograr los Objetivos
+                        <p><strong>Relación:</strong> La implementación depende del trabajo en equipo entre el gobierno, sector privado y la sociedad. Buscamos alianzas estratégicas para extender el impacto.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Innovando para un mundo más inclusivo.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Centro de Estándares.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Desactivar todos
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    panels.forEach(p => {
+                        p.classList.remove('active');
+                        p.setAttribute('hidden', 'true');
+                    });
+
+                    // Activar el seleccionado
+                    const targetPanelId = tab.getAttribute('aria-controls');
+                    const targetPanel = document.getElementById(targetPanelId);
+
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    targetPanel.classList.add('active');
+                    targetPanel.removeAttribute('hidden');
+                    targetPanel.focus(); // Mover el foco al panel
+                });
+            });
+        });
+    </script>
     <script src="../assets/js/script.js"></script>
 </body>
 </html>
