@@ -1,55 +1,82 @@
 /* ================================================= */
 /* Estilos Exclusivos para el Modo de Alto Contraste */
+/* (WCAG AAA - Amarillo/Blanco/Cian sobre Negro) */
 /* ================================================= */
 
 body.high-contrast {
-    /* Colores estrictos para contraste AA/AAA */
-    background-color: black;
-    color: white;
+    /* Base: Negro puro y blanco brillante */
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 body.high-contrast header, 
 body.high-contrast .learning-resource,
 body.high-contrast .course-card,
-body.high-contrast .profile-selector button {
-    background-color: #1a1a1a;
-    border-color: white !important;
-    color: white;
+body.high-contrast .profile-selector button,
+body.high-contrast .simple-login-form {
+    background-color: #111111 !important; /* Fondo gris oscuro, no negro puro, para distinguir elementos */
+    border-color: #FFFF00 !important; /* Borde amarillo brillante */
+    color: #FFFFFF !important;
 }
 
 body.high-contrast h1,
 body.high-contrast h2,
 body.high-contrast h3,
 body.high-contrast h4 {
-    color: yellow; /* Color de acento de alto contraste */
+    color: #FFFF00 !important; /* Títulos en amarillo brillante */
 }
 
-body.high-contrast a,
+/* Links and Navigation */
+body.high-contrast a:not(.button-primary),
 body.high-contrast nav a:hover,
 body.high-contrast nav a[aria-current="page"] {
-    color: lightblue;
-    border-color: lightblue;
+    color: #00FFFF !important; /* Enlaces en cian brillante */
+    border-color: #00FFFF !important;
 }
 
-body.high-contrast .progress-bar-container {
-    background-color: #333;
-}
-body.high-contrast .progress-bar-fill {
-    background-color: yellow;
-}
-body.high-contrast .progress-bar-text {
-    color: white;
+/* Buttons and UI elements */
+body.high-contrast .button-primary {
+    background-color: #FFFF00 !important; /* Botones en amarillo */
+    color: #000000 !important; /* Texto del botón en negro */
+    font-weight: bold;
 }
 body.high-contrast .button-primary:hover {
-    background-color: darkred;
+    background-color: #00FFFF !important; /* Hover en cian */
+    transform: none; /* Desactivar transiciones */
+}
+body.high-contrast .button-accent {
+    background-color: #FF00FF !important; /* Magenta para acento */
+    color: #000000 !important;
+}
+body.high-contrast .profile-selector button span {
+    color: #CCCCCC !important; /* Texto secundario gris claro */
+}
+
+/* Progress Bar */
+body.high-contrast .progress-bar-container {
+    background-color: #333333 !important;
+}
+body.high-contrast .progress-bar-fill {
+    background-color: #FFFF00 !important;
+}
+body.high-contrast .progress-bar-text {
+    color: #FFFFFF !important;
+}
+
+/* Form Inputs */
+body.high-contrast input {
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+    border-color: #FFFF00 !important;
 }
 
 /* =================================================== */
 /* Estilos Exclusivos para el Modo Lector (Cognitivo) */
+/* (Lógica de pictogramas y fuente sin serifa) */
 /* =================================================== */
 
 body.reader-active {
-    font-family: sans-serif !important; /* Fuente limpia y sin serifa para dislexia */
+    font-family: sans-serif !important; 
     line-height: 1.8;
 }
 
@@ -69,9 +96,8 @@ body.reader-active .learning-resource h3::before {
     font-weight: bold;
 }
 
-/* Estilo para transcripción simplificada */
 body.reader-active .transcript-content p {
-    font-family: inherit; /* Remover el monospace para mejorar la legibilidad */
+    font-family: inherit; 
     font-size: 1em;
     font-weight: 500;
 }
