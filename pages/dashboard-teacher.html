@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
+                <li><a href="../pages/dashboard-teacher.html" aria-current="page">Mi Dashboard Docente</a></li>
+                <li><a href="../pages/login-teacher.html">Acceso Docentes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-title">
+            <h2 id="dashboard-title">Panel de Capacitación Docente</h2>
+            <p>Accede a los módulos de formación sobre inclusión y metodologías adaptadas.</p>
+        </section>
+
+        <section class="section-container" aria-labelledby="courses-heading">
+            <h3 id="courses-heading">Módulos de Capacitación Activos</h3>
+            <div class="course-list">
+                <div class="course-card">
+                    <h4>Módulo 1: ISO 14001 y Reciclaje Inclusivo</h4>
+                    <p>Accede a la capacitación obligatoria sobre estándares ambientales y su aplicación inclusiva.</p>
+                    <a href="../classes/class-module-1-teacher.html" class="button-primary">Iniciar Capacitación</a>
+                </div>
+                <div class="course-card course-pending">
+                    <h4>Módulo 2: Herramientas Digitales Accesibles</h4>
+                    <p>Próximo módulo. Enfoque en la configuración de la interfaz para alumnos.</p>
+                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1">Bloqueado</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
