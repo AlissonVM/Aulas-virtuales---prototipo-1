@@ -10,8 +10,9 @@
     --light-bg-color: #ffffff;
     --font-size-base: 16px;
     --max-width: 1200px;
-    --border-radius-base: 8px; /* Variable para radio de borde */
-    --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); /* Variable para sombra */
+    --border-radius-base: 8px; 
+    --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12); /* Nueva sombra más profunda */
 }
 
 body {
@@ -27,11 +28,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
     margin-bottom: 0.8em;
+    font-weight: 700;
 }
 h2 { font-size: 2.2em; }
 h3 { font-size: 1.6em; }
 ul {
-    list-style: none; /* Limpieza general de listas */
+    list-style: none; 
     padding: 0;
 }
 
@@ -39,7 +41,7 @@ ul {
 /* Accesibilidad por Defecto (WCAG) */
 /* ======================== */
 a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
-    outline: 4px solid var(--accent-color); /* Foco vibrante */
+    outline: 4px solid var(--accent-color); 
     outline-offset: 3px;
     border-radius: 5px;
 }
@@ -446,10 +448,10 @@ main {
     margin-top: 30px;
 }
 
-/* Pestañas */
+/* Pestañas (Tabs) */
 .tabs-container {
     display: flex;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #e0e0e0; /* Línea de base más clara */
     margin-bottom: 20px;
     overflow-x: auto;
 }
@@ -459,7 +461,7 @@ main {
     padding: 15px 25px;
     font-size: 1.1em;
     font-weight: 600;
-    color: var(--text-color);
+    color: #666; /* Color de texto suave */
     cursor: pointer;
     transition: color 0.3s, border-bottom 0.3s;
     border-bottom: 3px solid transparent;
@@ -484,39 +486,62 @@ main {
 }
 .standard-card {
     background: var(--light-bg-color);
-    padding: 20px;
+    padding: 25px;
     border-radius: var(--border-radius-base);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid var(--accent-color);
+    box-shadow: var(--shadow-base);
+    border-left: 5px solid; /* Usado para los colores de énfasis de ISO */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+.standard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+/* Colores de énfasis por ISO para darle vida */
+.iso-card-9001 { border-left-color: #3498db; }    /* Azul - Calidad */
+.iso-card-14001 { border-left-color: #2ecc71; }  /* Verde - Ambiental */
+.iso-card-45001 { border-left-color: #e74c3c; }  /* Rojo - Seguridad */
+.iso-card-26000 { border-left-color: #9b59b6; }  /* Púrpura - RS */
+
+
 .standard-card h4 {
     color: var(--primary-color);
     margin-top: 0;
+    font-size: 1.2em;
 }
 .standard-card strong {
     color: var(--secondary-color);
+    font-weight: 700;
 }
 
-.ods-list ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-left: 3px solid var(--secondary-color);
-    padding-left: 20px;
+/* ODS List (Diseño de tarjetas separadas) */
+.ods-list {
+    padding: 0 10px;
 }
-.ods-list li {
-    padding: 10px;
-    background: #f0faff;
-    border-radius: 5px;
+.ods-list h3 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
+.ods-item {
+    padding: 20px;
+    background: var(--light-bg-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent-color);
+}
+
 .ods-number {
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--primary-color);
     font-size: 1.1em;
     display: block;
     margin-bottom: 5px;
+}
+.ods-item p {
+    margin: 5px 0 0 0;
+    font-size: 0.95em;
+    color: #555;
 }
 
 
