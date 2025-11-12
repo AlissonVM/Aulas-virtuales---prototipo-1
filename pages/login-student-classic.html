@@ -23,9 +23,10 @@
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
-                <li><a href="login-student-classic.html" aria-current="page">Mi Dashboard Alumno</a></li>
-                <li><a href="login.html">Acceso Adaptado</a></li>
+                <li id="nav-dashboard-link"><a href="login-student-classic.html" aria-current="page">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link"><a href="login.html">Acceso Adaptado</a></li>
                 <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -59,8 +60,8 @@
         // Lógica de simulación de login alumno para esta página
         document.getElementById('student-login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Simulación de credenciales correctas
-            localStorage.setItem('userProfile', 'Estudiante Clásico');
+            // CORRECCIÓN: Usar 'student' para la variable de sesión y redirigir al dashboard de alumno
+            localStorage.setItem('userProfile', 'student'); 
             localStorage.setItem('showWelcome', 'true');
             window.location.href = '../pages/dashboard.html';
         });
