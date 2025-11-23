@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fontToggle) {
         fontToggle.addEventListener('click', () => body.classList.toggle('large-font'));
     }
+    // Lector de Pantalla (TTS)
     if (readerToggle) {
         readerToggle.addEventListener('click', () => {
             alert('Simulación de Lector de Pantalla (TTS) activo. Leyendo el contenido principal...');
@@ -37,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             localStorage.removeItem('userProfile');
             localStorage.removeItem('showWelcome');
-            // Redirigir al inicio 
-            // Determinar la ruta relativa para index.html (si está en pages/ o docs/, retroceder)
+            // Redirigir al inicio (calcula la ruta relativa para volver a index.html)
             const path = window.location.pathname;
             const target = path.includes('/pages/') || path.includes('/docs/') ? '../index.html' : 'index.html';
             window.location.href = target; 
@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Actualizar el texto y el enlace en el menú principal
             const aTag = dashboardLinkLi.querySelector('a');
-            if(aTag && !aTag.href.includes(dashboardFile)) { 
+            if(aTag) { 
                 aTag.textContent = dashboardText;
                 
-                // Determinar la ruta relativa correcta (si estamos en pages/, docs/ o root)
+                // Determinar la ruta relativa correcta para el Dashboard
                 const path = window.location.pathname;
                 if (path.includes('/pages/')) {
-                    aTag.href = dashboardFile; // Ya estamos en la carpeta pages/
+                    aTag.href = dashboardFile; 
                 } else if (path.includes('/docs/')) {
                     aTag.href = '../pages/' + dashboardFile;
                 } else { // Estamos en la raíz (index.html)
@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const aTag = dashboardLinkLi.querySelector('a');
             if(aTag) {
                  aTag.textContent = 'Mi Dashboard Alumno';
-                 aTag.href = (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') ? 'pages/login-student-classic.html' : 'login-student-classic.html'; 
+                 // Asegurar que el link apunte al login correcto desde cualquier lugar
+                 aTag.href = (window.location.pathname.includes('/pages/') || window.location.pathname.includes('/docs/')) ? 'login-student-classic.html' : 'pages/login-student-classic.html'; 
             }
         }
     }
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const profileType = button.getAttribute('data-profile');
                 localStorage.setItem('userProfile', profileType); 
                 localStorage.setItem('showWelcome', 'true');
-                window.location.href = 'dashboard.html'; // Redirección correcta después de login adaptado
+                window.location.href = 'dashboard.html'; 
             });
         });
     }
