@@ -55,13 +55,12 @@
     </footer>
 
     <script>
-        // Lógica de simulación de login docente
         document.getElementById('teacher-login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // CORRECCIÓN: Usar 'teacher' para la variable de sesión y redirigir al dashboard de docente
             localStorage.setItem('userProfile', 'teacher'); 
             localStorage.setItem('showWelcome', 'true');
-            window.location.href = '../pages/dashboard-teacher.html'; 
+            // CORRECCIÓN FINAL: Ruta relativa simple a dashboard-teacher.html (ambos en pages/)
+            window.location.href = 'dashboard-teacher.html'; 
         });
     </script>
     <script src="../assets/js/script.js"></script>
