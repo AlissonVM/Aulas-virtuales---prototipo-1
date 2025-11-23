@@ -57,13 +57,12 @@
     </footer>
 
     <script>
-        // Lógica de simulación de login alumno para esta página
         document.getElementById('student-login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // CORRECCIÓN: Usar 'student' para la variable de sesión y redirigir al dashboard de alumno
             localStorage.setItem('userProfile', 'student'); 
             localStorage.setItem('showWelcome', 'true');
-            window.location.href='../pages/dashboard.html';
+            // CORRECCIÓN FINAL: Ruta relativa simple a dashboard.html (ambos en pages/)
+            window.location.href = 'dashboard.html'; 
         });
     </script>
     <script src="../assets/js/script.js"></script>
