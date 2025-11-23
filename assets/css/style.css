@@ -10,9 +10,9 @@
     --light-bg-color: #ffffff;
     --font-size-base: 16px;
     --max-width: 1200px;
-    --border-radius-base: 10px; 
-    --shadow-base: 0 6px 16px rgba(0, 0, 0, 0.08); 
-    --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.15); 
+    --border-radius-base: 10px; /* Borde más suave */
+    --shadow-base: 0 6px 16px rgba(0, 0, 0, 0.08); /* Sombra más suave y moderna */
+    --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.15); /* Sombra de profundidad en hover */
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
     margin-bottom: 0.8em;
-    font-weight: 800; 
+    font-weight: 800; /* Fuente más gruesa para títulos */
 }
 h1 { font-size: 3.0em; } 
 h2 { font-size: 2.4em; }
@@ -116,7 +116,7 @@ nav a {
 }
 nav a:hover, nav a[aria-current="page"] {
     color: var(--secondary-color);
-    border-bottom: 3px solid var(--secondary-color); 
+    border-bottom: 3px solid var(--secondary-color); /* Borde más grueso */
     padding-bottom: 2px;
 }
 main {
@@ -130,13 +130,13 @@ main {
     margin-bottom: 50px;
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-base);
-    overflow: hidden; 
+    overflow: hidden; /* Para contener efectos de fondo */
 }
 
 /* Estilos de Hero Específicos */
 .hero-home {
-    background: linear-gradient(135deg, #f3f9ff 0%, #b2ebf2 100%); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Fondo azul claro suave */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra más dramática para el Hero */
 }
 .hero-subtitle {
     font-size: 1.25em;
@@ -156,6 +156,7 @@ main {
 .hero-forum {
     background: linear-gradient(135deg, #e8eaf6, #c5cae9);
 }
+
 
 .access-buttons {
     display: flex;
@@ -188,7 +189,7 @@ main {
 .button-accent:hover { background-color: #e08b1a; }
 .button-secondary:hover { background-color: #48316e; }
 
-/* Sección Core de Discapacidades */
+/* Sección Core de Discapacidades (NUEVO) */
 .core-needs-section {
     padding: 60px 20px;
     background: var(--light-bg-color);
@@ -204,7 +205,7 @@ main {
 }
 .need-card {
     padding: 25px;
-    background: #f4f6f9; 
+    background: #f4f6f9; /* Fondo muy claro */
     border-radius: var(--border-radius-base);
     text-align: center;
     transition: all 0.3s ease;
@@ -277,41 +278,6 @@ main {
 }
 
 /* Estilos de Login y Dashboard */
-.profile-selector {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    max-width: 700px;
-    margin: 40px auto;
-    padding-bottom: 20px;
-}
-.profile-selector button {
-    background: var(--light-bg-color);
-    padding: 30px;
-    font-size: 1.2em;
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: left;
-    transition: background 0.3s, border-color 0.3s, color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-    color: var(--primary-color);
-}
-.profile-selector button:hover {
-    background: var(--primary-color);
-    border-color: var(--secondary-color);
-    color: white;
-}
-.profile-selector button span {
-    display: block;
-    font-size: 0.8em;
-    color: #777;
-    margin-top: 5px;
-}
-.profile-selector button:hover span {
-    color: #e0e0e0;
-}
 .simple-login-form {
     max-width: 400px;
     margin: 40px auto;
@@ -352,7 +318,66 @@ main {
 .welcome-banner.active {
     opacity: 1;
 }
-/* Estilos de Bienestar Digital */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    height: 30px;
+    margin-top: 15px;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 45%; 
+    background-color: var(--secondary-color);
+    border-radius: inherit;
+    transition: width 0.6s ease;
+}
+.progress-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 30px;
+    font-size: 0.9em;
+}
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+    color: var(--primary-color);
+}
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+.course-card {
+    padding: 25px;
+    background: var(--light-bg-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.course-card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+.course-card .button-primary {
+    margin-top: 15px;
+}
+.course-card.course-pending {
+    opacity: 0.7;
+    border: 2px dashed #aaa;
+    position: relative;
+}
+.course-card .button-primary.disabled {
+    pointer-events: none;
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+/* Nueva tarjeta de Bienestar */
 .bienestar-card {
     background: linear-gradient(135deg, #f0f4ff, #e3e9ff);
     padding: 25px;
@@ -376,6 +401,10 @@ main {
     text-decoration: none;
     font-weight: 600;
 }
+.bienestar-card a:hover {
+    text-decoration: underline;
+}
+
 /* Estilos de Aulas */
 .learning-resource {
     background: var(--light-bg-color);
@@ -406,8 +435,18 @@ main {
     height: 100%;
     border: none;
 }
+.video-caption {
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
+}
+.transcript-section {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 2px solid #eee;
+}
 
-/* Estilos de Foros */
+/* Estilos de Foro (Final) */
 .forum-container {
     padding: 20px;
     background: var(--light-bg-color);
@@ -450,10 +489,6 @@ main {
     font-size: 1.1em;
     transition: color 0.2s;
 }
-.thread-info h4 a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
 .thread-stats {
     display: flex;
     gap: 25px;
@@ -464,7 +499,44 @@ main {
 .thread-stats .stat-count {
     color: var(--accent-color);
 }
-/* Estilos de Estándares/Docs */
+
+/* Estilos de Estándares (docs/standards.html) */
+.standard-hub {
+    margin-top: 30px;
+}
+.subsection-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--secondary-color);
+    padding-left: 10px;
+}
+/* Pestañas (Tabs) */
+.tabs-container {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0; 
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+.tab-button {
+    background: none;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #666; 
+    cursor: pointer;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+}
+.tab-button:hover {
+    color: var(--primary-color);
+}
+.tab-button.active {
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
+}
+/* Contenido de Pestañas y Tarjetas ISO */
 .standard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -482,36 +554,47 @@ main {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
+/* Colores de énfasis por ISO */
 .iso-card-9001 { border-left-color: #3498db; }    
 .iso-card-14001 { border-left-color: #2ecc71; }  
 .iso-card-45001 { border-left-color: #e74c3c; }  
 .iso-card-26000 { border-left-color: #9b59b6; }  
+.standard-card h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.2em;
+}
+.standard-card strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
 
-/* ODS List y GRI List (Estilos mejorados) */
+/* Estilo para GRI/ODS (Listado de Tarjetas) */
 .standard-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-}
-.standard-list .ods-item {
-    padding: 20px;
-    background: var(--light-bg-color);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
-    border-left: 5px solid var(--primary-color);
-    transition: transform 0.2s;
 }
 .ods-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
 }
+.standard-list .ods-item,
 .ods-list .ods-item {
-    border-left: 5px solid var(--accent-color);
     padding: 20px;
     background: var(--light-bg-color);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
+    border-left: 5px solid var(--primary-color); /* Estilo GRI */
+    transition: transform 0.2s;
+}
+.ods-list .ods-item {
+    border-left: 5px solid var(--accent-color); /* Estilo ODS */
+}
+.standard-list .ods-item:hover,
+.ods-list .ods-item:hover {
+    transform: translateY(-3px);
 }
 .ods-number {
     font-weight: 700;
@@ -520,6 +603,12 @@ main {
     display: block;
     margin-bottom: 5px;
 }
+.ods-item p {
+    margin: 5px 0 0 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
 
 /* Footer */
 footer {
@@ -531,7 +620,9 @@ footer {
     font-size: 0.9em;
 }
 
+/* ======================== */
 /* Media Queries (Responsividad) */
+/* ======================== */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
