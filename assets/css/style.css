@@ -10,9 +10,9 @@
     --light-bg-color: #ffffff;
     --font-size-base: 16px;
     --max-width: 1200px;
-    --border-radius-base: 8px; 
-    --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); 
-    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12); 
+    --border-radius-base: 10px; 
+    --shadow-base: 0 6px 16px rgba(0, 0, 0, 0.08); 
+    --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.15); 
 }
 
 body {
@@ -28,11 +28,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
     margin-bottom: 0.8em;
-    font-weight: 700;
+    font-weight: 800; 
 }
-h1 { font-size: 2.8em; } 
-h2 { font-size: 2.2em; }
-h3 { font-size: 1.6em; }
+h1 { font-size: 3.0em; } 
+h2 { font-size: 2.4em; }
+h3 { font-size: 1.8em; }
 ul {
     list-style: none; 
     padding: 0;
@@ -57,7 +57,7 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     white-space: nowrap;
     border-width: 0;
 }
-/* Widget de Accesibilidad (Mismo) */
+/* Widget de Accesibilidad */
 #accessibility-widget {
     position: fixed;
     top: 50%;
@@ -83,10 +83,6 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     border-radius: 4px;
     transition: background 0.2s, color 0.2s;
     font-size: 0.9em;
-}
-#accessibility-widget button:hover {
-    background: var(--secondary-color);
-    color: white;
 }
 
 /* ======================== */
@@ -120,7 +116,8 @@ nav a {
 }
 nav a:hover, nav a[aria-current="page"] {
     color: var(--secondary-color);
-    border-bottom: 2px solid var(--secondary-color);
+    border-bottom: 3px solid var(--secondary-color); 
+    padding-bottom: 2px;
 }
 main {
     max-width: var(--max-width);
@@ -133,11 +130,13 @@ main {
     margin-bottom: 50px;
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-base);
+    overflow: hidden; 
 }
 
 /* Estilos de Hero Específicos */
 .hero-home {
-    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); 
+    background: linear-gradient(135deg, #f3f9ff 0%, #b2ebf2 100%); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
 }
 .hero-subtitle {
     font-size: 1.25em;
@@ -158,7 +157,6 @@ main {
     background: linear-gradient(135deg, #e8eaf6, #c5cae9);
 }
 
-
 .access-buttons {
     display: flex;
     justify-content: center;
@@ -174,278 +172,10 @@ main {
     border-radius: var(--border-radius-base);
     display: inline-block;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
     border: none; 
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .button-primary:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-2px);
-}
-/* Clases de apoyo para botones */
-.button-accent { background-color: var(--accent-color); }
-.button-secondary { background-color: var(--primary-color); } 
-.button-accent:hover { background-color: #e08b1a; }
-.button-secondary:hover { background-color: #48316e; }
-
-/* Grid de Enlaces/Features */
-.section-container {
-    padding: 0 20px;
-}
-.section-heading {
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--secondary-color);
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-.link-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-    margin-bottom: 60px;
-}
-.card-link {
-    display: block;
-    padding: 30px;
-    background: var(--light-bg-color);
-    border: 1px solid #ddd;
-    border-top: 5px solid var(--secondary-color); 
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 700;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    font-size: 1.1em;
-}
-.card-link:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    border-color: var(--accent-color);
-}
-.card-link h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-.card-link p {
-    color: var(--text-color);
-    font-weight: 400;
-    font-size: 0.9em;
-}
-.access-grid-small {
-     display: flex;
-     justify-content: center;
-     gap: 15px;
-     margin-bottom: 50px;
-}
-
-/* Estilos de Login y Dashboard */
-.simple-login-form {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 25px;
-    background: var(--light-bg-color);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-base);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.simple-login-form label {
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-top: 5px;
-}
-.simple-login-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-.login-link-adaptado {
-    text-align: center;
-    font-size: 0.9em;
-    margin-top: 10px;
-}
-/* Estilos de Dashboard */
-.welcome-banner {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-    border-radius: var(--border-radius-base);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-.welcome-banner.active {
-    opacity: 1;
-}
-/* ... otros estilos de dashboard / clases sin cambios ... */
-
-/* ======================== */
-/* ESTILOS DE FORO (forums.html) */
-/* ======================== */
-.forum-container {
-    padding: 20px;
-    background: var(--light-bg-color);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-base);
-}
-.forum-thread-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px; 
-    border: 1px solid #e0e0e0;
-    border-radius: var(--border-radius-base);
-    overflow: hidden;
-    margin-top: 20px;
-}
-.forum-thread-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: #fff;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background-color 0.2s;
-}
-.forum-thread-card:last-child {
-    border-bottom: none;
-}
-.forum-thread-card:hover {
-    background: #f5f5f5;
-}
-.thread-stats {
-    display: flex;
-    gap: 25px;
-    text-align: right;
-    font-size: 0.9em;
-    font-weight: 600;
-}
-.thread-stats .stat-count {
-    color: var(--accent-color);
-}
-
-/* ======================== */
-/* ESTILOS DE ESTÁNDARES (docs/standards.html) - CORREGIDOS */
-/* ======================== */
-.standard-hub {
-    margin-top: 30px;
-}
-.subsection-title {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-left: 5px solid var(--secondary-color);
-    padding-left: 10px;
-}
-/* Pestañas (Tabs) */
-.tabs-container {
-    display: flex;
-    border-bottom: 2px solid #e0e0e0; 
-    margin-bottom: 20px;
-    overflow-x: auto;
-}
-.tab-button.active {
-    color: var(--secondary-color);
-    border-bottom-color: var(--secondary-color);
-}
-/* Contenido de Pestañas y Tarjetas ISO (Mismo buen estilo) */
-.standard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-.standard-card {
-    background: var(--light-bg-color);
-    padding: 25px;
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-base);
-    border-left: 5px solid; 
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-/* Colores de énfasis por ISO */
-.iso-card-9001 { border-left-color: #3498db; }    
-.iso-card-14001 { border-left-color: #2ecc71; }  
-.iso-card-45001 { border-left-color: #e74c3c; }  
-.iso-card-26000 { border-left-color: #9b59b6; }  
-
-/* ODS List y GRI List (Estilos mejorados) */
-.standard-list {
-    /* Contenedor para la lista de GRI */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-.standard-list .ods-item,
-.ods-list .ods-item {
-    padding: 20px;
-    background: var(--light-bg-color);
-    border-radius: 8px;
-    margin-bottom: 0; /* Ya está controlado por gap */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Sombra más fuerte */
-    transition: transform 0.2s;
-}
-.standard-list .ods-item:hover,
-.ods-list .ods-item:hover {
-    transform: translateY(-3px);
-}
-
-/* Estilo para GRI: Enfatiza con Primary Color */
-.standard-list .ods-item {
-    border-left: 5px solid var(--primary-color);
-}
-.standard-list .ods-item h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    font-size: 1.2em;
-}
-
-/* Estilo para ODS: Enfatiza con Accent Color (Naranja/Turquesa) */
-.ods-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-}
-.ods-list .ods-item {
-    border-left: 5px solid var(--accent-color);
-}
-.ods-number {
-    font-weight: 700;
-    color: var(--secondary-color); /* Usar Turquesa */
-    font-size: 1.1em;
-    display: block;
-    margin-bottom: 5px;
-}
-.ods-item p {
-    margin: 5px 0 0 0;
-    font-size: 0.95em;
-    color: #555;
-}
-
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    margin-top: 60px;
-    font-size: 0.9em;
-}
-
-/* ======================== */
-/* Media Queries (Responsividad) */
-/* ======================== */
-@media (max-width: 768px) {
-    /* ... (Media queries existentes sin cambios sustanciales) ... */
-    .access-grid-small {
-        flex-direction: column;
-    }
-    .ods-list {
-        grid-template-columns: 1fr;
-    }
-}
+    background-color: var(--primary
