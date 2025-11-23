@@ -10,9 +10,9 @@
     --light-bg-color: #ffffff;
     --font-size-base: 16px;
     --max-width: 1200px;
-    --border-radius-base: 10px; /* Borde más suave */
-    --shadow-base: 0 6px 16px rgba(0, 0, 0, 0.08); /* Sombra más suave y moderna */
-    --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.15); /* Sombra de profundidad en hover */
+    --border-radius-base: 8px; 
+    --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12); 
 }
 
 body {
@@ -28,11 +28,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
     margin-bottom: 0.8em;
-    font-weight: 800; /* Fuente más gruesa para títulos */
+    font-weight: 700;
 }
-h1 { font-size: 3.0em; } 
-h2 { font-size: 2.4em; }
-h3 { font-size: 1.8em; }
+h1 { font-size: 2.8em; } 
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.6em; }
 ul {
     list-style: none; 
     padding: 0;
@@ -84,6 +84,10 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     transition: background 0.2s, color 0.2s;
     font-size: 0.9em;
 }
+#accessibility-widget button:hover {
+    background: var(--secondary-color);
+    color: white;
+}
 
 /* ======================== */
 /* Diseño General y Componentes */
@@ -116,8 +120,7 @@ nav a {
 }
 nav a:hover, nav a[aria-current="page"] {
     color: var(--secondary-color);
-    border-bottom: 3px solid var(--secondary-color); /* Borde más grueso */
-    padding-bottom: 2px;
+    border-bottom: 2px solid var(--secondary-color);
 }
 main {
     max-width: var(--max-width);
@@ -130,13 +133,11 @@ main {
     margin-bottom: 50px;
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-base);
-    overflow: hidden; /* Para contener efectos de fondo */
 }
 
 /* Estilos de Hero Específicos */
 .hero-home {
-    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Fondo azul claro suave */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra más dramática para el Hero */
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); 
 }
 .hero-subtitle {
     font-size: 1.25em;
@@ -173,55 +174,19 @@ main {
     border-radius: var(--border-radius-base);
     display: inline-block;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    transition: background-color 0.3s, transform 0.2s;
     border: none; 
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .button-primary:hover {
     background-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 /* Clases de apoyo para botones */
 .button-accent { background-color: var(--accent-color); }
 .button-secondary { background-color: var(--primary-color); } 
 .button-accent:hover { background-color: #e08b1a; }
 .button-secondary:hover { background-color: #48316e; }
-
-/* Sección Core de Discapacidades (NUEVO) */
-.core-needs-section {
-    padding: 60px 20px;
-    background: var(--light-bg-color);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-base);
-    margin-bottom: 50px;
-}
-.core-needs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-.need-card {
-    padding: 25px;
-    background: #f4f6f9; /* Fondo muy claro */
-    border-radius: var(--border-radius-base);
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    border-bottom: 5px solid transparent;
-}
-.need-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border-bottom-color: var(--secondary-color);
-}
-.need-icon {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
 
 /* Grid de Enlaces/Features */
 .section-container {
@@ -278,6 +243,41 @@ main {
 }
 
 /* Estilos de Login y Dashboard */
+.profile-selector {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 700px;
+    margin: 40px auto;
+    padding-bottom: 20px;
+}
+.profile-selector button {
+    background: var(--light-bg-color);
+    padding: 30px;
+    font-size: 1.2em;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    color: var(--primary-color);
+}
+.profile-selector button:hover {
+    background: var(--primary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+.profile-selector button span {
+    display: block;
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+.profile-selector button:hover span {
+    color: #e0e0e0;
+}
 .simple-login-form {
     max-width: 400px;
     margin: 40px auto;
@@ -377,33 +377,6 @@ main {
     background-color: #ccc;
     cursor: not-allowed;
 }
-/* Nueva tarjeta de Bienestar */
-.bienestar-card {
-    background: linear-gradient(135deg, #f0f4ff, #e3e9ff);
-    padding: 25px;
-    border-radius: var(--border-radius-base);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    text-align: left;
-    border-left: 6px solid var(--primary-color);
-}
-.bienestar-card h3 {
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-top: 0;
-}
-.bienestar-card p {
-    font-size: 0.95em;
-    color: #555;
-}
-.bienestar-card a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
-}
-.bienestar-card a:hover {
-    text-decoration: underline;
-}
 
 /* Estilos de Aulas */
 .learning-resource {
@@ -435,18 +408,15 @@ main {
     height: 100%;
     border: none;
 }
-.video-caption {
-    margin-top: 15px;
-    font-style: italic;
-    color: #555;
-}
 .transcript-section {
     margin-top: 30px;
     padding-top: 15px;
     border-top: 2px solid #eee;
 }
 
-/* Estilos de Foro (Final) */
+/* ======================== */
+/* ESTILOS DE FORO (forums.html) */
+/* ======================== */
 .forum-container {
     padding: 20px;
     background: var(--light-bg-color);
@@ -470,11 +440,15 @@ main {
     background: #fff;
     border-bottom: 1px solid #f0f0f0;
     transition: background-color 0.2s;
-    border-left: 5px solid transparent;
+}
+.forum-thread-card:last-child {
+    border-bottom: none;
 }
 .forum-thread-card:hover {
     background: #f5f5f5;
-    border-left-color: var(--secondary-color);
+}
+.forum-thread-card.inactive {
+    opacity: 0.7;
 }
 .thread-info {
     flex-grow: 1;
@@ -489,6 +463,14 @@ main {
     font-size: 1.1em;
     transition: color 0.2s;
 }
+.thread-info h4 a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+.thread-meta {
+    font-size: 0.85em;
+    color: #777;
+}
 .thread-stats {
     display: flex;
     gap: 25px;
@@ -499,8 +481,21 @@ main {
 .thread-stats .stat-count {
     color: var(--accent-color);
 }
+.forum-pagination {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.forum-pagination .button-primary {
+    padding: 10px 15px;
+    font-size: 0.9em;
+}
 
-/* Estilos de Estándares (docs/standards.html) */
+/* ======================== */
+/* ESTILOS DE ESTÁNDARES (docs/standards.html) */
+/* ======================== */
 .standard-hub {
     margin-top: 30px;
 }
@@ -569,28 +564,39 @@ main {
     font-weight: 700;
 }
 
-/* Estilo para GRI/ODS (Listado de Tarjetas) */
+/* Estilo para GRI: Listado de Tarjetas */
 .standard-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
+.standard-list .ods-item {
+    padding: 20px;
+    background: var(--light-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.2s;
+}
+.standard-list .ods-item h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+/* Estilo para ODS: Grid de Tarjetas */
 .ods-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
 }
-.standard-list .ods-item,
 .ods-list .ods-item {
     padding: 20px;
     background: var(--light-bg-color);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
-    border-left: 5px solid var(--primary-color); /* Estilo GRI */
+    border-left: 5px solid var(--accent-color);
     transition: transform 0.2s;
-}
-.ods-list .ods-item {
-    border-left: 5px solid var(--accent-color); /* Estilo ODS */
 }
 .standard-list .ods-item:hover,
 .ods-list .ods-item:hover {
@@ -648,8 +654,14 @@ footer {
     .access-buttons {
         flex-direction: column;
     }
-    .link-grid, .course-list, .standard-grid, .core-needs-grid {
+    .link-grid, .course-list, .standard-grid {
         grid-template-columns: 1fr;
+    }
+    .simple-login-form {
+        margin: 20px auto;
+    }
+    .tabs-container {
+        flex-wrap: nowrap;
     }
     .access-grid-small {
         flex-direction: column;
