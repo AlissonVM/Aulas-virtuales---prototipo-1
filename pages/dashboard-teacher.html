@@ -22,31 +22,38 @@
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
-                <li><a href="../pages/dashboard-teacher.html" aria-current="page">Mi Dashboard Docente</a></li>
-                <li><a href="../pages/login-teacher.html">Acceso Docentes</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="dashboard-teacher.html" aria-current="page">Mi Dashboard Docente</a></li>
+                <li id="nav-login-link" style="display:none;"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-title">
-            <h2 id="dashboard-title">Panel de Capacitación Docente</h2>
-            <p>Accede a los módulos de formación sobre inclusión y metodologías adaptadas.</p>
+        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-heading">
+            <div id="welcome-banner" class="welcome-banner">
+                ¡Bienvenido/a, Docente Admin! Su portal de capacitación e indicadores de RSE.
+            </div>
+            <h1 id="dashboard-heading">Panel de Control Docente</h1>
+            <p>Aquí puede gestionar los cursos de capacitación en inclusión y sostenibilidad, y monitorear el progreso de sus alumnos.</p>
         </section>
 
-        <section class="section-container" aria-labelledby="courses-heading">
-            <h3 id="courses-heading">Módulos de Capacitación Activos</h3>
-            <div class="course-list">
-                <div class="course-card">
-                    <h4>Módulo 1: ISO 14001 y Reciclaje Inclusivo</h4>
-                    <p>Accede a la capacitación obligatoria sobre estándares ambientales y su aplicación inclusiva.</p>
-                    <a href="../classes/class-module-1-teacher.html" class="button-primary">Iniciar Capacitación</a>
+        <section class="section-container" aria-labelledby="teacher-actions-heading">
+            <h2 id="teacher-actions-heading" class="section-heading">Acciones Rápidas</h2>
+            <div class="link-grid">
+                <div class="card-link" role="article">
+                    <h3>Gestión de Alumnos</h3>
+                    <p>Ver estadísticas de accesibilidad y progreso.</p>
                 </div>
-                <div class="course-card course-pending">
-                    <h4>Módulo 2: Herramientas Digitales Accesibles</h4>
-                    <p>Próximo módulo. Enfoque en la configuración de la interfaz para alumnos.</p>
-                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1">Bloqueado</a>
+                <div class="card-link" role="article">
+                    <h3>Subir Material Adaptado</h3>
+                    <p>Herramientas para revisar y publicar contenido WCAG.</p>
+                </div>
+                <div class="card-link" role="article">
+                    <h3>Módulo de Capacitación RSE</h3>
+                    <p>Su curso obligatorio sobre ISO 14001 y ODS.</p>
                 </div>
             </div>
         </section>
@@ -54,7 +61,7 @@
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Portal Docente.</p>
     </footer>
 
     <script src="../assets/js/script.js"></script>
