@@ -23,9 +23,10 @@
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
-                <li><a href="login-student-classic.html">Mi Dashboard Alumno</a></li>
-                <li><a href="login.html">Acceso Adaptado</a></li>
+                <li id="nav-dashboard-link"><a href="login-student-classic.html">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link"><a href="login.html">Acceso Adaptado</a></li>
                 <li><a href="forums.html" aria-current="page">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -77,7 +78,7 @@
                         <span class="stat-count">98</span> Vistas
                     </div>
                 </article>
-
+                
                 <article class="forum-thread-card inactive" aria-labelledby="thread-4-title">
                     <div class="thread-info">
                         <h4 id="thread-4-title"><a href="#">Dudas sobre el uso de tipografía Open-Dyslexic</a></h4>
