@@ -1,103 +1,74 @@
-/* ================================================= */
-/* Estilos Exclusivos para el Modo de Alto Contraste */
-/* (WCAG AAA - Amarillo/Blanco/Cian sobre Negro) */
-/* ================================================= */
+/* ======================== */
+/* ACCESSIBILITY OVERRIDES (High Contrast and Large Font) */
+/* ======================== */
 
+/* High Contrast Mode */
 body.high-contrast {
-    /* Base: Negro puro y blanco brillante */
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
+    background-color: black !important;
+    color: white !important;
 }
-
-body.high-contrast header, 
-body.high-contrast .learning-resource,
-body.high-contrast .course-card,
-body.high-contrast .profile-selector button,
-body.high-contrast .simple-login-form {
-    background-color: #111111 !important; /* Fondo gris oscuro, no negro puro, para distinguir elementos */
-    border-color: #FFFF00 !important; /* Borde amarillo brillante */
-    color: #FFFFFF !important;
+body.high-contrast header,
+body.high-contrast .hero-section,
+body.high-contrast .card-link,
+body.high-contrast .simple-login-form,
+body.high-contrast .forum-container,
+body.high-contrast .standard-card,
+body.high-contrast .ods-item {
+    background-color: black !important;
+    color: white !important;
+    border-color: white !important;
+    box-shadow: none !important;
 }
 
 body.high-contrast h1,
 body.high-contrast h2,
 body.high-contrast h3,
-body.high-contrast h4 {
-    color: #FFFF00 !important; /* Títulos en amarillo brillante */
-}
-
-/* Links and Navigation */
-body.high-contrast a:not(.button-primary),
+body.high-contrast h4,
+body.high-contrast a,
 body.high-contrast nav a:hover,
 body.high-contrast nav a[aria-current="page"] {
-    color: #00FFFF !important; /* Enlaces en cian brillante */
-    border-color: #00FFFF !important;
+    color: yellow !important;
+    border-color: yellow !important;
 }
 
-/* Buttons and UI elements */
 body.high-contrast .button-primary {
-    background-color: #FFFF00 !important; /* Botones en amarillo */
-    color: #000000 !important; /* Texto del botón en negro */
-    font-weight: bold;
+    background-color: yellow !important;
+    color: black !important;
+    border: 2px solid white !important;
 }
 body.high-contrast .button-primary:hover {
-    background-color: #00FFFF !important; /* Hover en cian */
-    transform: none; /* Desactivar transiciones */
+    background-color: white !important;
+    color: black !important;
 }
-body.high-contrast .button-accent {
-    background-color: #FF00FF !important; /* Magenta para acento */
-    color: #000000 !important;
+body.high-contrast a:focus,
+body.high-contrast button:focus {
+    outline-color: magenta !important;
 }
-body.high-contrast .profile-selector button span {
-    color: #CCCCCC !important; /* Texto secundario gris claro */
+body.high-contrast .thread-meta,
+body.high-contrast .stat-count {
+    color: white !important;
 }
-
-/* Progress Bar */
-body.high-contrast .progress-bar-container {
-    background-color: #333333 !important;
-}
-body.high-contrast .progress-bar-fill {
-    background-color: #FFFF00 !important;
-}
-body.high-contrast .progress-bar-text {
-    color: #FFFFFF !important;
+body.high-contrast .iso-card-9001,
+body.high-contrast .iso-card-14001,
+body.high-contrast .iso-card-45001,
+body.high-contrast .iso-card-26000,
+body.high-contrast .standard-list .ods-item,
+body.high-contrast .ods-list .ods-item {
+    border-left-color: yellow !important; 
 }
 
-/* Form Inputs */
-body.high-contrast input {
-    background-color: #333333 !important;
-    color: #FFFFFF !important;
-    border-color: #FFFF00 !important;
-}
 
-/* =================================================== */
-/* Estilos Exclusivos para el Modo Lector (Cognitivo) */
-/* (Lógica de pictogramas y fuente sin serifa) */
-/* =================================================== */
-
-body.reader-active {
-    font-family: sans-serif !important; 
+/* Large Font Mode */
+body.large-font {
+    font-size: 1.25em; 
     line-height: 1.8;
 }
 
-/* Simulación de Pictogramas: añadir iconos antes de cada párrafo en el recurso de aprendizaje */
-body.reader-active .learning-resource p.resource-note::before,
-body.reader-active .learning-resource p::before {
-    content: "💡 ";
-    font-size: 1.2em;
-    margin-right: 8px;
-    font-weight: bold;
-}
-
-body.reader-active .learning-resource h3::before {
-    content: "📘 ";
-    font-size: 1.2em;
-    margin-right: 8px;
-    font-weight: bold;
-}
-
-body.reader-active .transcript-content p {
-    font-family: inherit; 
-    font-size: 1em;
-    font-weight: 500;
-}
+body.large-font h1 { font-size: 3.5em; }
+body.large-font h2 { font-size: 2.8em; }
+body.large-font h3 { font-size: 2.0em; }
+body.large-font .hero-subtitle { font-size: 1.5em; }
+body.large-font .card-link { font-size: 1.2em; }
+body.large-font nav a { font-size: 1.1em; }
+body.large-font footer p { font-size: 1em; }
+body.large-font .thread-stats { font-size: 1em; }
