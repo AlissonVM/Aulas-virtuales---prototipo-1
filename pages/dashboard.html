@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Dashboard | EducaTech Inclusiva</title>
+    <title>Dashboard Alumno | EducaTech Inclusiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/accessibility.css"> 
@@ -22,48 +22,53 @@
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
-                <li><a href="../pages/dashboard.html" aria-current="page">Mi Dashboard</a></li>
-                <li><a href="../pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="dashboard.html" aria-current="page">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link" style="display:none;"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <div id="welcome-message" aria-live="polite" class="welcome-banner"></div>
-
-        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-title">
-            <h2 id="dashboard-title">¡Bienvenido a tu Dashboard Personalizado!</h2>
-            <p>Aquí puedes ver tu progreso y acceder rápidamente a tus cursos adaptados.</p>
-        </section>
-
-        <section class="section-container" aria-labelledby="progress-heading">
-            <h3 id="progress-heading">Tu Progreso</h3>
-            <div class="progress-bar-container" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso general del 45%">
-                <div class="progress-bar-fill"></div>
-                <span class="progress-bar-text">45% Completado</span>
+        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-heading">
+            <div id="welcome-banner" class="welcome-banner">
+                ¡Bienvenido/a, Estudiante! Tu plataforma adaptada está lista.
             </div>
-            <p class="status-message">¡Sigue así! Estás a punto de completar el módulo de Sostenibilidad.</p>
+            <h1 id="dashboard-heading">Mi Progreso Educativo</h1>
+            <p>Estado de los cursos enfocados en Economía Circular y Sostenibilidad.</p>
+
+            <div class="progress-bar-container" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso total del curso">
+                <div class="progress-bar-fill" style="width: 45%;"></div>
+                <span class="progress-bar-text">45% Completo</span>
+            </div>
+            <p class="status-message">¡Sigue así! Estás a mitad de camino para obtener tu certificación RSE.</p>
         </section>
 
-        <section class="section-container" aria-labelledby="courses-heading">
-            <h3 id="courses-heading">Mis Cursos Activos</h3>
+        <section class="section-container" aria-labelledby="course-list-heading">
+            <h2 id="course-list-heading" class="section-heading">Mis Cursos Activos</h2>
             <div class="course-list">
-                <div class="course-card">
-                    <h4>ISO 14001: Fundamentos de la Sostenibilidad</h4>
-                    <p>Acceso al primer módulo y la evaluación. ¡Continúa tu aprendizaje!</p>
-                    <a href="../classes/class-module-1.html" class="button-primary">Ir al Curso</a>
+                
+                <div class="course-card" role="article" aria-labelledby="course-1-title">
+                    <h4 id="course-1-title">Módulo 1: Fundamentos de la Inclusión Digital (WCAG)</h4>
+                    <p>Enfocado en accesibilidad para baja visión y uso de lectores de pantalla. Finalizado.</p>
+                    <a href="class.html" class="button-primary button-secondary">Ver Contenido</a>
                 </div>
 
-                <div class="course-card course-pending">
-                    <h4>Auditoría de Sistemas de Gestión Inclusiva</h4>
-                    <p>Próximo curso. Requiere la finalización del Módulo 1.</p>
-                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1" aria-describedby="locked-info">Bloqueado</a>
-                    <p id="locked-info" class="sr-only">Este curso requiere la finalización previa del Módulo 1: Fundamentos de la Sostenibilidad.</p>
+                <div class="course-card" role="article" aria-labelledby="course-2-title">
+                    <h4 id="course-2-title">Módulo 2: ISO 14001 y Economía Circular</h4>
+                    <p>Principios de gestión ambiental. **Progreso: 60%**.</p>
+                    <a href="class.html" class="button-primary button-accent">Continuar Módulo</a>
+                </div>
+
+                <div class="course-card course-pending" role="article" aria-labelledby="course-3-title">
+                    <h4 id="course-3-title">Módulo 3: Aplicación de ODS en el sector PYME</h4>
+                    <p>Próxima lección: ODS 10 y Reducción de Desigualdades.</p>
+                    <a href="#" class="button-primary disabled" aria-disabled="true">Bloqueado</a>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer role="contentinfo">
