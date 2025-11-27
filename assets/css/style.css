@@ -2,7 +2,7 @@
 /* Variables y Reset Base */
 /* ======================== */
 :root {
-    --primary-color: #5d3d8f;   /* Morado del logo (Base) */
+    --primary-color: #5d3d8f;   /* Morado (Base) */
     --secondary-color: #00b8a9; /* Turquesa (Acento) */
     --accent-color: #ff9f1c;    /* Naranja (CTA/Foco) */
     --text-color: #333;
@@ -416,6 +416,14 @@ main {
     padding-top: 15px;
     border-top: 2px solid #eee;
 }
+.transcript-content p {
+    font-family: monospace; 
+    font-size: 0.9em;
+    line-height: 1.5;
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
 
 /* Estilos de Foros (Final) */
 .forum-container {
@@ -470,10 +478,11 @@ main {
 .thread-stats .stat-count {
     color: var(--accent-color);
 }
+
 /* Estilos de Estándares */
-.standard-grid {
+.standard-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 .standard-card {
@@ -487,11 +496,6 @@ main {
 .standard-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
-}
-.standard-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
 }
 .standard-list .ods-item {
     padding: 20px;
