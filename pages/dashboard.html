@@ -39,11 +39,11 @@
             <h1 id="dashboard-heading">Mi Progreso Educativo</h1>
             <p>Estado de los cursos enfocados en Economía Circular y Sostenibilidad.</p>
 
-            <div class="progress-bar-container" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso total del curso">
-                <div class="progress-bar-fill" style="width: 45%;"></div>
-                <span class="progress-bar-text">45% Completo</span>
+            <div class="progress-bar-container" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso total del curso">
+                <div class="progress-bar-fill" id="overall-progress" style="width: 95%;"></div>
+                <span class="progress-bar-text">95% Completo</span>
             </div>
-            <p class="status-message">¡Sigue así! Estás a mitad de camino para obtener tu certificación RSE.</p>
+            <p class="status-message">¡Felicidades! Completa la evaluación para finalizar el módulo de Economía Circular.</p>
         </section>
 
         <section class="section-container" aria-labelledby="wellbeing-heading">
@@ -59,22 +59,24 @@
             <h2 id="course-list-heading" class="section-heading">Mis Cursos Activos</h2>
             <div class="course-list">
                 
-                <div class="course-card" role="article" aria-labelledby="course-1-title">
-                    <h4 id="course-1-title">Módulo 1: Fundamentos de la Inclusión Digital (WCAG)</h4>
-                    <p>Enfocado en accesibilidad para baja visión y uso de lectores de pantalla. Finalizado.</p>
-                    <a href="../classes/class-module-1.html" class="button-primary button-secondary">Ver Contenido</a>
+                <div class="course-card" id="module-1-card" role="article" aria-labelledby="course-1-title">
+                    <h4 id="course-1-title">Módulo 1: Economía Circular y Reciclaje</h4>
+                    <p>Principios de gestión ambiental y ODS 12. **Estado: Listo para Evaluación**.</p>
+                    <a href="evaluation.html" id="m1-cta" class="button-primary button-evaluation">Iniciar Evaluación</a>
                 </div>
 
-                <div class="course-card" role="article" aria-labelledby="course-2-title">
-                    <h4 id="course-2-title">Módulo 2: ISO 14001 y Economía Circular</h4>
-                    <p>Principios de gestión ambiental. Progreso: **60%**.</p>
-                    <a href="../classes/class-module-1.html" class="button-primary button-accent">Continuar Módulo</a>
+                <div class="course-card course-pending" role="article" aria-labelledby="course-2-title">
+                    <h4 id="course-2-title">Módulo 2: Fundamentos de Inclusión Digital (WCAG)</h4>
+                    <p>Aprende sobre accesibilidad para baja visión y lectores de pantalla.</p>
+                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1" aria-describedby="m2-locked-reason">Bloqueado</a>
+                    <p id="m2-locked-reason" class="sr-only">Debe completar y aprobar el Módulo 1: Economía Circular para acceder a este curso.</p>
                 </div>
 
                 <div class="course-card course-pending" role="article" aria-labelledby="course-3-title">
                     <h4 id="course-3-title">Módulo 3: Aplicación de ODS en el sector PYME</h4>
                     <p>Próxima lección: ODS 10 y Reducción de Desigualdades.</p>
-                    <a href="#" class="button-primary disabled" aria-disabled="true">Bloqueado</a>
+                    <a href="#" class="button-primary disabled" aria-disabled="true" tabindex="-1" aria-describedby="m3-locked-reason">Bloqueado</a>
+                    <p id="m3-locked-reason" class="sr-only">Debe completar y aprobar el Módulo 1 y 2 para acceder a este curso.</p>
                 </div>
             </div>
         </section>
