@@ -1,6 +1,6 @@
 /* ================================================= */
 /* Estilos Exclusivos para el Modo de Alto Contraste */
-/* (WCAG AAA - Amarillo/Blanco/Cian sobre Negro) */
+/* (WCAG AAA - Color Functionality FIXED) */
 /* ================================================= */
 
 body.high-contrast {
@@ -15,10 +15,13 @@ body.high-contrast .card-link,
 body.high-contrast .simple-login-form,
 body.high-contrast .forum-container,
 body.high-contrast .standard-card,
-body.high-contrast .ods-item {
-    background-color: #111111 !important; /* Fondo gris oscuro, no negro puro, para distinguir elementos */
+body.high-contrast .ods-item,
+body.high-contrast .profile-selector button,
+body.high-contrast .bienestar-card {
+    background-color: #111111 !important; /* Fondo gris oscuro */
     border-color: #FFFF00 !important; /* Borde amarillo brillante */
     color: #FFFFFF !important;
+    box-shadow: none !important;
 }
 
 body.high-contrast h1,
@@ -65,33 +68,21 @@ body.high-contrast input {
     border-color: #FFFF00 !important;
 }
 
-/* =================================================== */
-/* Estilos Exclusivos para el Modo Lector (Cognitivo) */
-/* =================================================== */
+/* Large Font Mode */
+body.large-font {
+    font-size: 1.25em; 
+    line-height: 1.8;
+}
 
+/* Estilos para el Lector (Mismos) */
 body.reader-active {
     font-family: sans-serif !important; 
     line-height: 1.8;
 }
-
-/* Simulación de Pictogramas */
 body.reader-active .learning-resource p.resource-note::before,
 body.reader-active .learning-resource p::before {
     content: "💡 ";
     font-size: 1.2em;
     margin-right: 8px;
     font-weight: bold;
-}
-
-body.reader-active .learning-resource h3::before {
-    content: "📘 ";
-    font-size: 1.2em;
-    margin-right: 8px;
-    font-weight: bold;
-}
-
-body.reader-active .transcript-content p {
-    font-family: inherit; 
-    font-size: 1em;
-    font-weight: 500;
 }
