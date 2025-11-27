@@ -1,6 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
- * Asegura que el Alto Contraste, el Lector y las redirecciones funcionen correctamente.
+ * Controla la activación condicional de la accesibilidad, el lector expandido, y la redirección.
  */
 (function() {
     const root = document.documentElement;
@@ -62,7 +62,7 @@
     }
 
     function loadAccessibilityState() {
-        // Cargar estado persistente
+        // Cargar estado persistente (si existe)
         if (localStorage.getItem('contrastMode') === 'active') {
             body.classList.add('high-contrast');
         }
@@ -159,6 +159,7 @@
             const aTag = dashboardLinkLi.querySelector('a');
             if(aTag) { 
                 aTag.textContent = dashboardText;
+                
                 const path = window.location.pathname;
                 const prefix = (path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/')) ? '../pages/' : 'pages/';
                 aTag.href = prefix + dashboardFile;
@@ -222,14 +223,12 @@
     }
 
     // Lógica de Evaluación (Simulación de finalización de módulo)
-    // NOTA: Esto es solo un ejemplo de cómo se activaría la evaluación
     const module1Card = document.getElementById('module-1-card');
     if (module1Card) {
-        // Al hacer clic en la tarjeta, se simula que el módulo se completó
         module1Card.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') return; // Evitar interferir con el botón
-            
-            // Simular progreso completado
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return; 
+
+            // Simular progreso completado (100%)
             const progressFill = document.getElementById('overall-progress');
             if (progressFill) progressFill.style.width = '100%';
 
