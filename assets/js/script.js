@@ -1,6 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
- * Controla la activación condicional de la accesibilidad, el lector expandido, y la redirección.
+ * Asegura que el Alto Contraste, el Lector y las redirecciones funcionen correctamente.
  */
 (function() {
     const root = document.documentElement;
@@ -37,10 +37,8 @@
     // ARREGLO CRÍTICO: Lector de Pantalla Expandido
     function setupTTSListeners() {
         const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
-        // Elementos de Contenido principales a narrar (h1, h2, p, etc.)
         const contentElements = document.querySelectorAll('h1, h2, h3, p:not(.thread-meta), .hero-subtitle, .need-card h4, .need-card p, .standard-card h4, .ods-item');
 
-        // Narración de elementos interactivos (al hacer foco)
         interactives.forEach(element => {
             element.addEventListener('focus', function() {
                 let textToSpeak = element.getAttribute('aria-label') || element.textContent;
@@ -51,10 +49,8 @@
             });
         });
         
-        // Narración de contenido (al pasar el ratón - simulación)
         contentElements.forEach(element => {
              element.addEventListener('mouseenter', function() {
-                // Solo leer si el modo TTS está activo
                 if (ttsActive) {
                      speakText(element.textContent.trim());
                 }
@@ -66,7 +62,7 @@
     }
 
     function loadAccessibilityState() {
-        // Cargar estado persistente (si existe)
+        // Cargar estado persistente
         if (localStorage.getItem('contrastMode') === 'active') {
             body.classList.add('high-contrast');
         }
@@ -95,6 +91,7 @@
 
 
     // --- 2. Eventos del Widget ---
+    
     if (contrastToggle) {
         contrastToggle.addEventListener('click', () => {
             body.classList.toggle('high-contrast');
@@ -133,7 +130,7 @@
         });
     }
 
-    // --- 3. Lógica de Login Adaptado y Menú Dinámico ---
+    // --- 3. Lógica de Login y Menú Dinámico ---
 
     // Función de logout
     if (logoutButton) {
@@ -144,14 +141,13 @@
             localStorage.setItem('fontSize', 100);
             localStorage.setItem('ttsActive', 'false');
             localStorage.removeItem('showWelcome');
-            // Redirigir al inicio (calcula la ruta relativa)
             const path = window.location.pathname;
             const target = (path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/')) ? '../index.html' : 'index.html';
             window.location.href = target; 
         });
     }
 
-    // Menú dinámico: Carga la configuración del menú al iniciar
+    // Lógica del menú dinámico
     if (userProfile) {
         if (loginLinkLi) loginLinkLi.style.display = 'none';
         if (logoutLinkLi) logoutLinkLi.style.display = 'list-item';
@@ -163,9 +159,8 @@
             const aTag = dashboardLinkLi.querySelector('a');
             if(aTag) { 
                 aTag.textContent = dashboardText;
-                
                 const path = window.location.pathname;
-                const prefix = (path.includes('/pages/') || path.includes('/docs/')) ? '' : 'pages/';
+                const prefix = (path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/')) ? '../pages/' : 'pages/';
                 aTag.href = prefix + dashboardFile;
             }
         }
@@ -180,12 +175,14 @@
             button.addEventListener('click', () => {
                 const profile = button.getAttribute('data-profile');
                 
-                // Restablecer primero
+                // RESTABLECER PRIMERO
                 localStorage.setItem('contrastMode', 'inactive');
                 localStorage.setItem('fontSize', 100);
                 localStorage.setItem('ttsActive', 'false');
+                root.style.fontSize = '100%';
+                body.classList.remove('high-contrast');
                 
-                // ACTIVACIÓN CONDICIONAL
+                // ACTIVACIÓN CONDICIONAL DE SIMULACIÓN VISUAL
                 if (profile === "student-visual") {
                     localStorage.setItem('contrastMode', 'active');
                     localStorage.setItem('fontSize', 120);
@@ -197,13 +194,13 @@
                 localStorage.setItem('showWelcome', 'true');
                 
                 const targetDashboard = profile.includes('teacher') ? 'dashboard-teacher.html' : 'dashboard.html';
-                window.location.href = targetDashboard; // Redirección final
+                window.location.href = targetDashboard; 
             });
         });
     }
 
 
-    // Lógica de Login Clásico (Alumno/Docente)
+    // Lógica de Login Clásico
     const studentLoginForm = document.getElementById('student-login-form');
     if (studentLoginForm) {
         studentLoginForm.addEventListener('submit', (e) => {
@@ -224,7 +221,32 @@
         });
     }
 
-    // Cargar el estado al iniciar la página (Dashboard, Class, etc.)
+    // Lógica de Evaluación (Simulación de finalización de módulo)
+    // NOTA: Esto es solo un ejemplo de cómo se activaría la evaluación
+    const module1Card = document.getElementById('module-1-card');
+    if (module1Card) {
+        // Al hacer clic en la tarjeta, se simula que el módulo se completó
+        module1Card.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') return; // Evitar interferir con el botón
+            
+            // Simular progreso completado
+            const progressFill = document.getElementById('overall-progress');
+            if (progressFill) progressFill.style.width = '100%';
+
+            const ctaButton = document.getElementById('m1-cta');
+            if (ctaButton) {
+                ctaButton.textContent = 'Iniciar Evaluación';
+                ctaButton.href = 'evaluation.html';
+                ctaButton.classList.add('button-evaluation');
+                ctaButton.classList.remove('button-accent');
+                ctaButton.classList.remove('disabled');
+                ctaButton.removeAttribute('aria-disabled');
+                ctaButton.removeAttribute('tabindex');
+            }
+        });
+    }
+
+    // Cargar el estado al iniciar
     loadAccessibilityState();
 
 })();
