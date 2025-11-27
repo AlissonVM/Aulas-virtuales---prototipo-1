@@ -68,17 +68,12 @@ body.high-contrast input {
     border-color: #FFFF00 !important;
 }
 
-/* Large Font Mode */
-body.large-font {
-    font-size: 1.25em; 
-    line-height: 1.8;
-}
-
 /* Estilos para el Lector (Mismos) */
 body.reader-active {
     font-family: sans-serif !important; 
     line-height: 1.8;
 }
+
 body.reader-active .learning-resource p.resource-note::before,
 body.reader-active .learning-resource p::before {
     content: "💡 ";
